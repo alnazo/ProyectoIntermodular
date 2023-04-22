@@ -1,0 +1,53 @@
+BBDD:
+
+Tablas principales:
+ - Furbolista -> Nombre, Apellido, Nacimiento, Nacionalidad, NIF(Primary key)
+ - Club -> ID (Primary key), Nombre, Creacion, Estadio
+Reclacion:
+ - Militacion -> (NIF_Furbolista, ID_club) <- Temporada
+
+
+Programcion && Entorno:
+UML:
+    - Furbolista
+        - nombre : String
+        - apellido : String
+        - nacimiento : Date
+        - nacionalidad : String
+        - nif : String
+    -------------------------------
+        + Constructors
+        + Getter's
+        + Setter's
+        + Equals
+    ____________________________________
+
+    - Club
+        - id : int 
+        - nombre : String
+        - creacion : Date (YYYY)
+        - estadio : String
+    -------------------------------
+        + Constructors
+        + Getter's
+        + Setter's
+        + Equals
+    ____________________________________
+
+    - Militacion ?
+        - nif_furbolista : String
+        - id_club : int
+        - temporada : String
+    -------------------------------
+        + Constructors
+        + Getter's
+        + Setter's
+        + Equals
+    ____________________________________
+
+
+Logica:
+
+Mediante [Militacion] 1 Furbolista -> Club[]
+Mediante [Militacion] 1 Club -> Furbolista[]
+
