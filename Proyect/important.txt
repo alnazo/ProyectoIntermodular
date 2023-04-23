@@ -1,0 +1,5 @@
+Para la carga de la app, añadir argumento:
+
+--module-path ${PATH_TO_FX} --add-modules javafx.fxml,javafx.controls,javafx.graphics
+
+donde PATH_TO_FX en el IDE configurar la ruta de la libreria de JavaFX
