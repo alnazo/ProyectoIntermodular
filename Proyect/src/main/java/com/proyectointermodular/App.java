@@ -14,8 +14,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("view/primary"), 640, 480);
+        scene = new Scene(loadFXML("menuprincipal"), 640, 480);
         scene.getStylesheets().add("com/proyectointermodular/css/stiles.css");
+
+        stage.setTitle("Control de Futbolistas y Clubes Femenilo Liga");
         stage.setScene(scene);
         stage.show();
     }
@@ -25,7 +27,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
