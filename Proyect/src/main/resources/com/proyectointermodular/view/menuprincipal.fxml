@@ -5,21 +5,34 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.MenuPrincipal">
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0"
+      xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.proyectointermodular.controllers.MenuPrincipal">
     <children>
-      <Label text="Menú Principal">
-         <font>
-            <Font size="28.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="addPlayer" mnemonicParsing="false" onAction="#addPlayer" prefHeight="105.0" prefWidth="187.0" text="Añadir Jugadora" />
-            <Button fx:id="addClub" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addClub" prefHeight="105.0" prefWidth="187.0" text="Añadir Club" />
-         </children>
-      </HBox>
+        <Label text="Menú Principal">
+            <font>
+                <Font size="28.0"/>
+            </font>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="verJugadoras" mnemonicParsing="false" onAction="#verJugadoras" prefHeight="105.0"
+                        prefWidth="187.0" text="Lista de Jugadoras"/>
+                <Button fx:id="verClubs" layoutX="217.0" layoutY="10.0" mnemonicParsing="false" onAction="#verClubs"
+                        prefHeight="105.0" prefWidth="187.0" text="Lista de Clubs"/>
+            </children>
+        </HBox>
+        <Separator prefWidth="200.0"/>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="addPlayer" mnemonicParsing="false" onAction="#addPlayer" prefHeight="105.0"
+                        prefWidth="187.0" text="Añadir Jugadora"/>
+                <Button fx:id="addClub" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addClub"
+                        prefHeight="105.0" prefWidth="187.0" text="Añadir Club"/>
+            </children>
+        </HBox>
     </children>
 </VBox>

@@ -11,6 +11,10 @@ public class MenuPrincipal {
     private Button addPlayer;
     @FXML
     private Button addClub;
+    @FXML
+    private Button verJugadoras;
+    @FXML
+    private Button verClubs;
 
     @FXML
     private void addPlayer() throws IOException {
@@ -20,6 +24,16 @@ public class MenuPrincipal {
     @FXML
     private void addClub() throws IOException{
         App.setRoot("addClub");
+    }
+
+    @FXML
+    private void verJugadoras() throws IOException {
+        App.setRoot("verJugadoras");
+    }
+
+    @FXML
+    private void verClubs() throws IOException {
+        App.setRoot("verClubs");
     }
 
 
