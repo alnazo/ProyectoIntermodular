@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.proyectointermodular.dto.Militacion;
 
-public interface MilitacionManager extends Manager<Militacion, String> {
+public interface MilitacionManager extends Manager<Militacion> {
     
     /**
      * Busqueda de todos los objetos de la BBDD de una Temporada.

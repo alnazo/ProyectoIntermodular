@@ -34,12 +34,11 @@ public class ClubManagerImpl implements ClubManager {
     }
 
     @Override
-    public Club findById(Connection con, String id){
-        int newId = Integer.getInteger(id);
+    public Club findById(Connection con, Integer id){
         String sql = "SELECT * FROM club WHERE ID = ?";
 
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setInt(1, newId);
+            stmt.setInt(1, id);
             ResultSet result = stmt.executeQuery();
 
             result.beforeFirst();
@@ -60,10 +59,9 @@ public class ClubManagerImpl implements ClubManager {
     }
 
     @Override
-    public List<Club> findAllByIds(Connection con, Set<String> ids){
-        Set<Integer> newIds = convertStrToInt(ids);
+    public List<Club> findAllByIds(Connection con, Set<Integer> ids){
 
-        String sql = String.format("SELECT * FROM club WHERE id IN (%s)",newIds.stream().map(data -> "\""+data+"\"").collect(Collectors.joining(", ")));
+        String sql = String.format("SELECT * FROM club WHERE id IN (%s)",ids.stream().map(data -> "\""+data+"\"").collect(Collectors.joining(", ")));
 
         try (Statement stmt = con.createStatement()){
             ResultSet result = stmt.executeQuery(sql);
@@ -106,10 +104,6 @@ public class ClubManagerImpl implements ClubManager {
             return null;
         }
 
-    }
-
-    private static Set<Integer> convertStrToInt(Set<String> a){
-        return a.stream().map(Integer::parseInt).collect(Collectors.toSet());
     }
 
 

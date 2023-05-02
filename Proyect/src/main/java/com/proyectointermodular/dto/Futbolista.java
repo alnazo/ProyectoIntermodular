@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import lombok.Data;
 
 @Data
-public class Furbolista {
+public class Futbolista {
     private String nombre;
     private String apellido;
     private Date nacimiento;
@@ -15,8 +15,8 @@ public class Furbolista {
     private String nif;
 
 
-    public Furbolista(){}
-    public Furbolista(ResultSet result){
+    public Futbolista(){}
+    public Futbolista(ResultSet result){
         try {
             this.nombre = result.getString("nombre");
             this.apellido = result.getString("apellido");
