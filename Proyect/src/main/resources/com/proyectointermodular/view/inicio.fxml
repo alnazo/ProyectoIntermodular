@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+
+<Text layoutX="246.0" layoutY="300.0" textAlignment="CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido">
+    <font>
+        <Font size="36.0"/>
+    </font>
+</Text>

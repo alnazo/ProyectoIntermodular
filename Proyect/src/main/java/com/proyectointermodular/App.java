@@ -1,6 +1,7 @@
 package com.proyectointermodular;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,21 +15,16 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("menuprincipal"), 640, 480);
+        scene = new Scene(FXMLLoader.load(App.class.getResource("view/menuprincipal.fxml")), 800, 600);
         scene.getStylesheets().add("com/proyectointermodular/css/stiles.css");
 
+        stage.setMaximized(true);
         stage.setTitle("Control de Futbolistas y Clubes Femenilo Liga");
         stage.setScene(scene);
         stage.show();
     }
-
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
-        return fxmlLoader.load();
+    public static void closeProgram(){
+        Platform.exit();
     }
 
     public static void main(String[] args) {

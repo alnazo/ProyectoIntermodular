@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.VerJugadoras">
+    <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT">
+        <VBox alignment="CENTER">
+            <Label text="NIF" />
+            <TextField />
+        </VBox>
+        <VBox alignment="CENTER">
+            <Label text="Nombre" />
+            <TextField />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="20.0" layoutY="10.0">
+            <Label text="Apellido" />
+            <TextField />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="159.0" layoutY="10.0">
+            <Label text="Fecha Nacimiento" />
+            <TextField accessibleRole="DATE_PICKER" />
+        </VBox>
+        <VBox alignment="CENTER" layoutX="159.0" layoutY="10.0">
+            <Label text="Nacionalidad" />
+            <TextField />
+        </VBox>
+      <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="15.0" />
+        <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Buscar" />
+    </HBox>
+   <Separator prefHeight="15.0" prefWidth="200.0" />
+    <HBox alignment="CENTER">
+        <TableView prefHeight="400.0" prefWidth="806.0">
+            <columns>
+                <TableColumn prefWidth="99.0" text="NIF" />
+                <TableColumn prefWidth="84.0" text="Nombre" />
+                <TableColumn prefWidth="117.0" text="Apellido" />
+                <TableColumn prefWidth="133.0" text="Fecha Nacimiento" />
+                <TableColumn prefWidth="119.0" text="Nacionalidad" />
+            </columns>
+        </TableView>
+    </HBox>
+</VBox>

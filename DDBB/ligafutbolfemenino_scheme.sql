@@ -142,6 +142,7 @@ CREATE FUNCTION contar_equipos_por_jugadora(
     p_nif_jugadora varchar(9)
 )
 RETURNS INT
+--EN MySQL server añadir:  READS SQL DATA
 BEGIN
     DECLARE contador INT;
     SELECT COUNT(DISTINCT id_club)
