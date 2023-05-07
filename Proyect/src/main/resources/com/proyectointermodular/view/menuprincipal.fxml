@@ -6,46 +6,63 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.MenuPrincipal">
+<BorderPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.MenuPrincipal">
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar depthTest="DISABLE" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="Archivo">
-                <MenuItem id="closeMenu" fx:id="closeMenu" mnemonicParsing="false" onAction="#closeMenu" text="Close" />
+                <MenuItem id="closeMenu" fx:id="closeMenu" mnemonicParsing="false" onAction="#closeMenu" text="Cerrar aplicación"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Enlaces">
-                <MenuItem mnemonicParsing="false" onAction="#menuprincipal" text="Menú Principal" />
-                <SeparatorMenuItem mnemonicParsing="false" />
-                <MenuItem mnemonicParsing="false" onAction="#verJugadoras" text="Lista de Jugadoras" />
-                <MenuItem mnemonicParsing="false" onAction="#verClubs" text="Lista de Clubs" />
-                <SeparatorMenuItem mnemonicParsing="false" />
-                <MenuItem mnemonicParsing="false" onAction="#addPlayer" text="Añadir Jugadora" />
-                <MenuItem mnemonicParsing="false" onAction="#addClub" text="Añadir Club" />
+                <MenuItem mnemonicParsing="false" onAction="#menuprincipal" text="Menú Principal"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <MenuItem mnemonicParsing="false" onAction="#verJugadoras" text="Lista de Jugadoras"/>
+                <MenuItem mnemonicParsing="false" onAction="#verClubs" text="Lista de Clubs"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <MenuItem mnemonicParsing="false" onAction="#addPlayer" text="Añadir Jugadora"/>
+                <MenuItem mnemonicParsing="false" onAction="#addClub" text="Añadir Club"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
-                <MenuItem mnemonicParsing="false" text="About" />
+                <MenuItem mnemonicParsing="false" text="About"/>
             </Menu>
         </MenuBar>
     </top>
-    <right>
-        <VBox prefHeight="375.0" prefWidth="132.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
-            <Button fx:id="verJugadoras" layoutX="10.0" mnemonicParsing="false" onAction="#verJugadoras" prefHeight="75.0" prefWidth="200.0" text="Lista de Jugadoras" />
-            <Button fx:id="verClubs" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#verClubs" prefHeight="75.0" prefWidth="200.0" text="Lista de Clubs" />
-            <Button fx:id="addPlayer" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="200.0" text="Añadir Jugadora" />
-            <Button fx:id="addClub" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" onAction="#addClub" prefHeight="75.0" prefWidth="200.0" text="Añadir Club" />
-        </VBox>
-    </right>
-   <center>
-      <GridPane fx:id="windowsGeneric" alignment="CENTER" prefHeight="551.0" prefWidth="647.0" BorderPane.alignment="CENTER">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido">
-               <font>
-                  <Font size="36.0" />
-               </font>
+    <center>
+        <GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0"
+                  BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido/a">
+                <font>
+                    <Font size="36.0"/>
+                </font>
             </Text>
-      </GridPane>
-   </center>
+        </GridPane>
+    </center>
+    <right>
+        <GridPane minHeight="575.0" minWidth="150.0" prefHeight="300.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0"
+                                   prefWidth="150.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <Button fx:id="verJugadoras" mnemonicParsing="false" onAction="#verJugadoras" prefHeight="75.0"
+                    prefWidth="200.0" text="Lista de Jugadoras"/>
+            <Button fx:id="verClubs" mnemonicParsing="false" onAction="#verClubs" prefHeight="75.0" prefWidth="200.0"
+                    text="Lista de Clubs" GridPane.rowIndex="1"/>
+            <Button fx:id="addPlayer" mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="200.0"
+                    text="Añadir Jugadora" GridPane.rowIndex="2"/>
+            <Button fx:id="addClub" mnemonicParsing="false" onAction="#addClub" prefHeight="75.0" prefWidth="200.0"
+                    text="Añadir Club" GridPane.rowIndex="3"/>
+        </GridPane>
+    </right>
 </BorderPane>

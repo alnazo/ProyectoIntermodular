@@ -20,7 +20,6 @@ public class MilitacionManagerImpl implements MilitacionManager {
 
         try (Statement stmt = con.createStatement()) {
             ResultSet result = stmt.executeQuery("SELECT * FROM militacion");
-            result.beforeFirst();
             while (result.next()) {
                 milit.add(new Militacion(result));
             }
@@ -36,12 +35,11 @@ public class MilitacionManagerImpl implements MilitacionManager {
     @Override
     public Set<Militacion> findByTemporada(Connection con, String temporada) {
 
-        String sql = String.format("SELECT * FROM futbolista WHERE nombre LIKE %s", "%" + temporada + "%");
+        String sql = String.format("SELECT * FROM futbolista WHERE nombre LIKE '%s'", "%" + temporada + "%");
 
         try (Statement stmt = con.createStatement()) {
             ResultSet result = stmt.executeQuery(sql);
             Set<Militacion> milit = new HashSet<>();
-            result.beforeFirst();
 
             while (result.next()){
                 milit.add(new Militacion(result));

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.VerClub">
+   <rowConstraints>
+      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="500.0" prefHeight="500.0" valignment="CENTER" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" />
+   </columnConstraints>
+      <TableView fx:id="tabla" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="500.0" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+          <columns>
+              <TableColumn fx:id="t_id" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="ID" />
+              <TableColumn fx:id="t_nombre" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Nombre" />
+              <TableColumn fx:id="t_creacion" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Año creación" />
+              <TableColumn fx:id="t_estadio" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Nombre del estadio" />
+          </columns>
+      </TableView>
+    <Button mnemonicParsing="false" onAction="#search" text="Buscar" GridPane.columnIndex="4" GridPane.rowSpan="2" />
+    <Label text="ID" />
+    <Label text="Nombre" GridPane.columnIndex="1" />
+    <Label text="Año creación" GridPane.columnIndex="2" />
+    <Label text="Nombre del estadio" GridPane.columnIndex="3" />
+    <TextField fx:id="id" GridPane.rowIndex="1" />
+    <TextField fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="creacion" promptText="yyyy-mm-dd" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+    <TextField fx:id="estadio" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+</GridPane>

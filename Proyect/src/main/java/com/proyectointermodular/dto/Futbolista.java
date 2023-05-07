@@ -22,7 +22,7 @@ public class Futbolista {
             this.apellido = result.getString("apellido");
             this.nacimiento = result.getDate("nacimiento");
             this.nacionalidad = result.getString("nacionalidad");
-            this.nif = result.getString("nacionalidad");
+            this.nif = result.getString("nif");
         } catch (SQLException e) {
             e.printStackTrace();
         }

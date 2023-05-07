@@ -6,15 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class MenuPrincipal {
     @FXML
     private GridPane windowsGeneric;
-    @FXML
-    private Text principal;
     @FXML
     public Button addPlayer;
     @FXML
@@ -28,7 +25,7 @@ public class MenuPrincipal {
 
     @FXML
     private void closeMenu() {
-        App.closeProgram();
+        System.exit(0);
     }
 
     private void changeView(String file) throws IOException {
@@ -36,6 +33,9 @@ public class MenuPrincipal {
         windowsGeneric.getChildren().add(FXMLLoader.load(App.class.getResource("view/"+ file + ".fxml")));
     }
 
+    public void inicio() throws IOException {
+        changeView("inicio");
+    }
     @FXML
     private void menuprincipal() throws IOException {
         changeView("inicio");

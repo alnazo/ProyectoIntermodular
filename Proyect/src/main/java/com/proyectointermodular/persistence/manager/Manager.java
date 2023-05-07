@@ -2,7 +2,6 @@ package com.proyectointermodular.persistence.manager;
 
 import java.sql.Connection;
 import java.util.List;
-import java.util.Set;
 
 public interface Manager<T> {
     /**

@@ -19,7 +19,6 @@ public class ClubManagerImpl implements ClubManager {
 
         try (Statement stmt = con.createStatement()) {
             ResultSet result = stmt.executeQuery("SELECT * FROM club");
-            result.beforeFirst();
             while (result.next()){
                 clubs.add(new Club(result));
             }
@@ -40,8 +39,6 @@ public class ClubManagerImpl implements ClubManager {
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet result = stmt.executeQuery();
-
-            result.beforeFirst();
 
             Club club = null;
 
@@ -65,7 +62,6 @@ public class ClubManagerImpl implements ClubManager {
 
         try (Statement stmt = con.createStatement()){
             ResultSet result = stmt.executeQuery(sql);
-            result.beforeFirst();
 
             List<Club> clubs = new ArrayList<>();
 
@@ -85,14 +81,13 @@ public class ClubManagerImpl implements ClubManager {
     @Override
     public Set<Club> findByName(Connection con, String name){
 
-        String sql = "SELECT * FROM club WHERE nombre LIKE ?";
+        String sql = "SELECT * FROM club WHERE nombre LIKE '?'";
 
         try (PreparedStatement stmt = con.prepareStatement(sql)){
             stmt.setString(1, "%"+name+"%");
             ResultSet result = stmt.executeQuery();
 
             Set<Club> clubs = new HashSet<>();
-            result.beforeFirst();
             while (result.next()){
                 Club club = new Club(result);
                 clubs.add(club);
