@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.*;
 
 public class FutbolistaManagerImpl implements FutbolistaManager {
-    private static MySQLConnector connector = new MySQLConnector();
+    private final static MySQLConnector connector = new MySQLConnector();
     @Override
     public List<Futbolista> findAll() {
 
@@ -32,9 +32,12 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
 
     @Override
     public Set<Futbolista> findByNif(String nif) {
-
-        String sql = String.format("SELECT * FROM futbolista WHERE nif LIKE '%s'", "%" + nif + "%");
-
+        String sql;
+        if(nif.length()<9) {
+            sql = String.format("SELECT * FROM futbolista WHERE nif LIKE '%s'", "%" + nif + "%");
+        } else {
+            sql = String.format("SELECT * FROM futbolista WHERE nif = '%s'", nif);
+        }
         try {
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
