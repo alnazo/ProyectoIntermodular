@@ -37,10 +37,10 @@
       <Label text="NIF" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <Label text="Fecha Nacimiento" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <Label text="Nacionalidad" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <TextField maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField maxWidth="150.0" minHeight="-Infinity" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <TextField maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <TextField maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      <Button maxHeight="50.0" maxWidth="120.0" minHeight="50.0" minWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Guardar" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <TextField fx:id="nombre" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="apellido" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <TextField fx:id="nif" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <TextField fx:id="nacimiento" promptText="yyyy-mm-dd" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField fx:id="nacionalidad" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <Button onAction="#enviar" maxHeight="50.0" maxWidth="120.0" minHeight="50.0" minWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Guardar" GridPane.columnIndex="2" GridPane.rowIndex="5" />
 </GridPane>

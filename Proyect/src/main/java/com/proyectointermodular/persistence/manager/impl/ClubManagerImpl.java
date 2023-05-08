@@ -1,6 +1,7 @@
 package com.proyectointermodular.persistence.manager.impl;
 
 import com.proyectointermodular.dto.Club;
+import com.proyectointermodular.persistence.connector.MySQLConnector;
 import com.proyectointermodular.persistence.manager.ClubManager;
 
 import java.sql.*;
@@ -13,19 +14,26 @@ import java.util.stream.Collectors;
 
 public class ClubManagerImpl implements ClubManager {
 
+    private static MySQLConnector connector = new MySQLConnector();
+
     @Override
-    public List<Club> findAll(Connection con){
+    public List<Club> findAll(){
         List<Club> clubs = new ArrayList<>();
 
-        try (Statement stmt = con.createStatement()) {
+        try {
+            Connection con = connector.getMySQLConnection();
+            Statement stmt = con.createStatement();
+
             ResultSet result = stmt.executeQuery("SELECT * FROM club");
             while (result.next()){
                 clubs.add(new Club(result));
             }
 
+            con.close();
+
             return clubs;
 
-        } catch (SQLException e){
+        } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
             return null;
         }
@@ -33,10 +41,13 @@ public class ClubManagerImpl implements ClubManager {
     }
 
     @Override
-    public Club findById(Connection con, Integer id){
+    public Club findById(Integer id){
         String sql = "SELECT * FROM club WHERE ID = ?";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+        try {
+            Connection con = connector.getMySQLConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
             stmt.setInt(1, id);
             ResultSet result = stmt.executeQuery();
 
@@ -46,9 +57,11 @@ public class ClubManagerImpl implements ClubManager {
                 club = new Club(result);
             }
 
+            con.close();
+
             return club;
 
-        } catch (SQLException e){
+        } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
             return null;
         }
@@ -56,11 +69,14 @@ public class ClubManagerImpl implements ClubManager {
     }
 
     @Override
-    public List<Club> findAllByIds(Connection con, Set<Integer> ids){
+    public List<Club> findAllByIds(Set<Integer> ids){
 
         String sql = String.format("SELECT * FROM club WHERE id IN (%s)",ids.stream().map(data -> "\""+data+"\"").collect(Collectors.joining(", ")));
 
-        try (Statement stmt = con.createStatement()){
+        try {
+            Connection con = connector.getMySQLConnection();
+            Statement stmt = con.createStatement();
+
             ResultSet result = stmt.executeQuery(sql);
 
             List<Club> clubs = new ArrayList<>();
@@ -70,20 +86,25 @@ public class ClubManagerImpl implements ClubManager {
                 clubs.add(club);
             }
 
+            con.close();
+
             return clubs;
 
-        } catch (SQLException e){
+        } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
             return null;
         }
     }
 
     @Override
-    public Set<Club> findByName(Connection con, String name){
+    public Set<Club> findByName(String name){
 
         String sql = "SELECT * FROM club WHERE nombre LIKE '?'";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql)){
+        try {
+            Connection con = connector.getMySQLConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
             stmt.setString(1, "%"+name+"%");
             ResultSet result = stmt.executeQuery();
 
@@ -92,9 +113,12 @@ public class ClubManagerImpl implements ClubManager {
                 Club club = new Club(result);
                 clubs.add(club);
             }
+
+            con.close();
+
             return clubs;
 
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;
         }

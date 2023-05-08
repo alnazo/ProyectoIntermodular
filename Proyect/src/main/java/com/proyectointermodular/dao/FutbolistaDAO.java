@@ -15,7 +15,7 @@ public class FutbolistaDAO {
         try {
             Connection con = connector.getMySQLConnection();
 
-            String sql = "INSERT INTO futbolista VALUES ?, ?, ?, ?, ?";
+            String sql = "INSERT INTO futbolista VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, futbolista.getNombre());

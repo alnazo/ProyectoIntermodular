@@ -16,7 +16,6 @@ public class App extends Application {
 
         stage.setMinHeight(600.0);
         stage.setMinWidth(800.0);
-        stage.setMaximized(true);
 
         stage.setTitle("Control de Futbolistas y Clubes Femenilo Liga");
 

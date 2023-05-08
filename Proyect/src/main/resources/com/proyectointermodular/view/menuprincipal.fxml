@@ -17,10 +17,11 @@
     <top>
         <MenuBar depthTest="DISABLE" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="Archivo">
-                <MenuItem id="closeMenu" fx:id="closeMenu" mnemonicParsing="false" onAction="#closeMenu" text="Cerrar aplicación"/>
+                <MenuItem id="closeMenu" fx:id="closeMenu" mnemonicParsing="false" onAction="#closeMenu"
+                          text="Cerrar aplicación"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Enlaces">
-                <MenuItem mnemonicParsing="false" onAction="#menuprincipal" text="Menú Principal"/>
+                <MenuItem mnemonicParsing="false" onAction="#inicio" text="Menú Principal"/>
                 <SeparatorMenuItem mnemonicParsing="false"/>
                 <MenuItem mnemonicParsing="false" onAction="#verJugadoras" text="Lista de Jugadoras"/>
                 <MenuItem mnemonicParsing="false" onAction="#verClubs" text="Lista de Clubs"/>

@@ -52,20 +52,11 @@ public class VerClub extends MenuPrincipal {
         t_creacion.setCellValueFactory(new PropertyValueFactory<Club, Date>("creacion"));
         t_estadio.setCellValueFactory(new PropertyValueFactory<Club, String>("estadio"));
 
-        try {
-            MySQLConnector connector = new MySQLConnector();
-            Connection con = connector.getMySQLConnection();
+        ClubManagerImpl search = new ClubManagerImpl();
+        List<Club> list = search.findAll();
+        ObservableList<Club> oblist = FXCollections.observableArrayList(list);
 
-            ClubManagerImpl search = new ClubManagerImpl();
-            List<Club> list = search.findAll(con);
-            ObservableList<Club> oblist = FXCollections.observableArrayList(list);
-
-            tabla.setItems(oblist);
-
-            con.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
+        tabla.setItems(oblist);
     }
 
     @FXML

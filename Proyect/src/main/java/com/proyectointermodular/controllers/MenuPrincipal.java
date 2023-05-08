@@ -36,10 +36,6 @@ public class MenuPrincipal {
     public void inicio() throws IOException {
         changeView("inicio");
     }
-    @FXML
-    private void menuprincipal() throws IOException {
-        changeView("inicio");
-    }
 
     @FXML
     private void verJugadoras() throws IOException{
@@ -53,7 +49,7 @@ public class MenuPrincipal {
 
     @FXML
     private void addPlayer() throws IOException {
-        changeView("addPlayer");
+        changeView("addJugadoras");
     }
 
     @FXML
