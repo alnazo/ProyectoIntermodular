@@ -29,6 +29,8 @@ public class VerJugadora extends MenuPrincipal {
     private TableColumn<Futbolista, Date> t_nacimiento;
     @FXML
     private TableColumn<Futbolista, String> t_nacionalidad;
+    @FXML
+    private TableColumn<Futbolista, String> t_eliminar;
 
     @FXML
     private TextField nif;
@@ -187,6 +189,14 @@ public class VerJugadora extends MenuPrincipal {
                 }
             }
         }
+    }
+
+    public void edit(){
+
+    }
+
+    public void eliminar(){
+
     }
 
 }

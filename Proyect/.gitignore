@@ -1,4 +1,4 @@
 target/
 .vscode/
 .idea
-src/main/resources/config.properties
+/src/main/resources/com/proyectointermodular/config.properties
