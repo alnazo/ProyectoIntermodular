@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class MilitacionManagerImpl implements MilitacionManager {
 
-    private static MySQLConnector connector = new MySQLConnector();
+    private final static MySQLConnector connector = new MySQLConnector();
 
     @Override
     public List<Militacion> findAll() {

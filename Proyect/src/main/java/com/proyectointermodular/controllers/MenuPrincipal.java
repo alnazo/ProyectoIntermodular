@@ -38,22 +38,22 @@ public class MenuPrincipal {
     }
 
     @FXML
-    private void verJugadoras() throws IOException{
+    public void verJugadoras() throws IOException{
         changeView("verJugadoras");
     }
 
     @FXML
-    private void verClubs() throws IOException {
+    public void verClubs() throws IOException {
         changeView("verClubs");
     }
 
     @FXML
-    private void addPlayer() throws IOException {
+    public void addPlayer() throws IOException {
         changeView("addJugadoras");
     }
 
     @FXML
-    private void addClub() throws IOException {
+    public void addClub() throws IOException {
         changeView("addClub");
     }
 

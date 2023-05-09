@@ -7,11 +7,14 @@ import com.proyectointermodular.popup.PopUp;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.Set;
 
 
 public class AddJugadora extends MenuPrincipal{
+
+    public static boolean confirm = false;
 
     @FXML
     private TextField nombre;
@@ -46,7 +49,7 @@ public class AddJugadora extends MenuPrincipal{
                     PopUp.display("El NIF que esta introduciendo esta repetido");
                 } else {
                     FutbolistaDAO.create(jugadora);
-                    PopUp.extra("jugadora");
+                    PopUp.add("jugadora");
                 }
             }
         } else {

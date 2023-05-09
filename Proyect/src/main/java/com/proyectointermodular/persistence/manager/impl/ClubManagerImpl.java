@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class ClubManagerImpl implements ClubManager {
 
-    private static MySQLConnector connector = new MySQLConnector();
+    private final static MySQLConnector connector = new MySQLConnector();
 
     @Override
     public List<Club> findAll(){
