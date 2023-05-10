@@ -1,8 +1,5 @@
 package com.proyectointermodular.popup;
 
-import com.proyectointermodular.controllers.AddClub;
-import com.proyectointermodular.controllers.AddJugadora;
-import com.proyectointermodular.controllers.MenuPrincipal;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,10 +9,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class PopUp {
+public class PopUp{
+
+    public static boolean resultado;
+
     public static void display(String msg) {
         Stage popupwindow = new Stage();
 
@@ -54,12 +52,12 @@ public class PopUp {
         Button button1 = new Button("Si");
         Button button2 = new Button("No");
 
-        button1.setOnAction((e) -> {
-            changeAction(tipo, true);
+        button1.setOnAction(e -> {
+            resultado = true;
             popupwindow.close();
         });
-        button2.setOnAction((e) -> {
-            changeAction(tipo, false);
+        button2.setOnAction(e -> {
+            resultado = false;
             popupwindow.close();
         });
 
@@ -77,19 +75,5 @@ public class PopUp {
         popupwindow.showAndWait();
     }
 
-    private static void changeAction(String s, boolean b){
-        try {
-            if (s.equals("jugadora") && b) {
-                MenuPrincipal.addPlayer();
-            } else if (s.equals("jugadora")) {
-                MenuPrincipal.verJugadoras();
-            } else if (s.equals("club") && b) {
-                MenuPrincipal.addClub();
-            } else if (s.equals("club")) {
-                MenuPrincipal.verClubs();
-            }
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
+
 }

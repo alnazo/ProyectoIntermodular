@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<GridPane minHeight="500.0" minWidth="575.0" prefHeight="500.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.AddJugadora">
+<GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="500.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.jugadoras.AddJugadora">
    <rowConstraints>
       <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />
@@ -42,5 +42,5 @@
       <TextField fx:id="nif" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
       <TextField fx:id="nacimiento" promptText="yyyy-mm-dd" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <TextField fx:id="nacionalidad" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      <Button onAction="#enviar" maxHeight="50.0" maxWidth="120.0" minHeight="50.0" minWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Guardar" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Button fx:id="enviar" onAction="#enviar" maxHeight="50.0" maxWidth="120.0" minHeight="50.0" minWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Guardar" GridPane.columnIndex="2" GridPane.rowIndex="5" />
 </GridPane>

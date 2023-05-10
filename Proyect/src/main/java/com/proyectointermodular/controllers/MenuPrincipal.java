@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class MenuPrincipal {
     @FXML
-    private GridPane windowsGeneric;
+    public GridPane windowsGeneric;
     @FXML
     public Button addPlayer;
     @FXML
@@ -39,22 +39,22 @@ public class MenuPrincipal {
 
     @FXML
     public void verJugadoras() throws IOException{
-        changeView("verJugadoras");
+        changeView("jugadoras/verJugadoras");
     }
 
     @FXML
-    public void verClubs() throws IOException {
-        changeView("verClubs");
+    private void verClubs() throws IOException {
+        changeView("club/verClubs");
     }
 
     @FXML
     public void addPlayer() throws IOException {
-        changeView("addJugadoras");
+        changeView("jugadoras/addJugadoras");
     }
 
     @FXML
-    public void addClub() throws IOException {
-        changeView("addClub");
+    private void addClub() throws IOException {
+        changeView("club/addClub");
     }
 
 

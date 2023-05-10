@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public class FutbolistaDAO {
 
-    private static MySQLConnector connector = new MySQLConnector();
+    private final static MySQLConnector connector = new MySQLConnector();
 
-    public static boolean create(Futbolista futbolista){
+    public static void create(Futbolista futbolista){
         try {
             Connection con = connector.getMySQLConnection();
 
@@ -24,15 +24,11 @@ public class FutbolistaDAO {
             stmt.setString(4, futbolista.getNacionalidad());
             stmt.setString(5, futbolista.getNif());
 
-            boolean res = stmt.execute();
-
+            stmt.execute();
             con.close();
-
-            return res;
 
         } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
-            return false;
         }
     }
 

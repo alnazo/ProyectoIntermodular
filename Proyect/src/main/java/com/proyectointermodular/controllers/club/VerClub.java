@@ -1,7 +1,7 @@
-package com.proyectointermodular.controllers;
+package com.proyectointermodular.controllers.club;
 
+import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dto.Club;
-import com.proyectointermodular.persistence.connector.MySQLConnector;
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
 import com.proyectointermodular.popup.PopUp;
 import javafx.collections.FXCollections;
@@ -12,9 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.List;
 
 public class VerClub extends MenuPrincipal {

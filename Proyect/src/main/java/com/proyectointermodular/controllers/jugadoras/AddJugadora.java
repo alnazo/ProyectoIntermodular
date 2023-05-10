@@ -1,5 +1,6 @@
-package com.proyectointermodular.controllers;
+package com.proyectointermodular.controllers.jugadoras;
 
+import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dao.FutbolistaDAO;
 import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
@@ -12,9 +13,7 @@ import java.sql.Date;
 import java.util.Set;
 
 
-public class AddJugadora extends MenuPrincipal{
-
-    public static boolean confirm = false;
+public class AddJugadora extends MenuPrincipal {
 
     @FXML
     private TextField nombre;
@@ -38,7 +37,7 @@ public class AddJugadora extends MenuPrincipal{
         if(!s_nacimiento.matches("((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])") && !s_nacimiento.equals("")) {
             PopUp.display("La fecha que se ha introducido no corresponde al formato yyyy-mm-dd (Año-Mes-Día)");
         } else if(!s_nombre.equals("") && !s_apellido.equals("") && !s_nacimiento.equals("") && !s_nacionalidad.equals("") && !s_nif.equals("")){
-            if(!comporbar_nif(s_nif)) {
+            if(!comporbar_nif(s_nif.toUpperCase())) {
                 PopUp.display("El NIF que ha introducio no es correcto.");
             } else {
                 Date nac = Date.valueOf(s_nacimiento);
@@ -48,8 +47,17 @@ public class AddJugadora extends MenuPrincipal{
                 if(list.size() > 0){
                     PopUp.display("El NIF que esta introduciendo esta repetido");
                 } else {
-                    FutbolistaDAO.create(jugadora);
                     PopUp.add("jugadora");
+                    FutbolistaDAO.create(jugadora);
+                    try {
+                        if (PopUp.resultado) {
+                            addPlayer();
+                        } else {
+                            verJugadoras();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         } else {

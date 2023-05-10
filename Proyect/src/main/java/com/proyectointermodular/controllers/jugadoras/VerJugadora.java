@@ -1,5 +1,6 @@
-package com.proyectointermodular.controllers;
+package com.proyectointermodular.controllers.jugadoras;
 
+import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
 import com.proyectointermodular.popup.PopUp;
@@ -27,8 +28,6 @@ public class VerJugadora extends MenuPrincipal {
     private TableColumn<Futbolista, Date> t_nacimiento;
     @FXML
     private TableColumn<Futbolista, String> t_nacionalidad;
-    @FXML
-    private TableColumn<Futbolista, String> t_eliminar;
 
     @FXML
     private TextField nif;
@@ -41,6 +40,9 @@ public class VerJugadora extends MenuPrincipal {
     @FXML
     private TextField nacionalidad;
 
+    MenuItem o1 = new MenuItem("Editar");
+    MenuItem o2 = new MenuItem("Eliminar");
+
     @FXML
     public void initialize() {
         t_nombre.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("nombre"));
@@ -52,9 +54,18 @@ public class VerJugadora extends MenuPrincipal {
         FutbolistaManagerImpl search = new FutbolistaManagerImpl();
         List<Futbolista> list = search.findAll();
         ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
-
         tabla.setItems(oblist);
 
+        tabla.setContextMenu(new ContextMenu(o1, o2));
+
+        tabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            o1.setOnAction( e -> {
+                edit(newValue);
+            });
+            o2.setOnAction( e -> {
+                eliminar(newValue);
+            });
+        });
     }
 
 
@@ -128,12 +139,14 @@ public class VerJugadora extends MenuPrincipal {
         }
     }
 
-    public void edit() {
+    public void edit(Futbolista f) {
 
+        tabla.refresh();
     }
 
-    public void eliminar() {
+    public void eliminar(Futbolista f) {
 
+        tabla.refresh();
     }
 
 }

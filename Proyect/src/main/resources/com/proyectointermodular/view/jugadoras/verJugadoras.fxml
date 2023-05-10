@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane minHeight="500.0" minWidth="575.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.VerJugadora">
+<GridPane alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.jugadoras.VerJugadora">
   <columnConstraints>
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" />
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" />
@@ -33,7 +33,6 @@
          <TableColumn fx:id="t_apellido" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Apellido" />
          <TableColumn fx:id="t_nacimiento" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Fecha nacimiento" />
          <TableColumn fx:id="t_nacionalidad" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Nacionalidad" />
-         <TableColumn fx:id="t_eliminar" maxWidth="1.7976931348623157E308" minWidth="60.0" prefWidth="-1.0" resizable="false" text="Eliminar" />
         </columns>
       </TableView>
       <Label text="NIF" />
@@ -41,7 +40,7 @@
       <Label text="Apellido" GridPane.columnIndex="2" />
       <Label text="Fecha nacimiento" GridPane.columnIndex="3" />
       <Label text="Nacionalidad" GridPane.columnIndex="4" />
-      <Button fx:id="buscar" mnemonicParsing="false" onAction="#search" text="Buscar" GridPane.columnIndex="5" GridPane.rowSpan="2" />
+      <Button mnemonicParsing="false" onAction="#search" text="Buscar" GridPane.columnIndex="5" GridPane.rowSpan="2" />
       <TextField fx:id="nif" GridPane.rowIndex="1" />
       <TextField fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="apellido" GridPane.columnIndex="2" GridPane.rowIndex="1" />
