@@ -24,6 +24,11 @@ public class MenuPrincipal {
     public MenuItem closeMenu;
 
     @FXML
+    public MenuItem f3 = new MenuItem("Clubs militados");
+    @FXML
+    public MenuItem c3 = new MenuItem("Jugadoras militan");
+
+    @FXML
     private void closeMenu() {
         System.exit(0);
     }
@@ -39,22 +44,27 @@ public class MenuPrincipal {
 
     @FXML
     public void verJugadoras() throws IOException{
-        changeView("jugadoras/verJugadoras");
+        changeView("futbolista/verFutbolista");
     }
 
     @FXML
-    private void verClubs() throws IOException {
+    public void verClubs() throws IOException {
         changeView("club/verClubs");
     }
 
     @FXML
     public void addPlayer() throws IOException {
-        changeView("jugadoras/addJugadoras");
+        changeView("futbolista/addFutbolista");
     }
 
     @FXML
-    private void addClub() throws IOException {
+    public void addClub() throws IOException {
         changeView("club/addClub");
+    }
+
+    @FXML
+    public void verMilitacion() throws IOException {
+        changeView("militacion/verMilitacion");
     }
 
 

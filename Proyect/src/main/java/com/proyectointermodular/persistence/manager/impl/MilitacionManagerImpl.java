@@ -8,9 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class MilitacionManagerImpl implements MilitacionManager {
@@ -18,8 +16,8 @@ public class MilitacionManagerImpl implements MilitacionManager {
     private final static MySQLConnector connector = new MySQLConnector();
 
     @Override
-    public List<Militacion> findAll() {
-        List<Militacion> milit = new ArrayList<>();
+    public Set<Militacion> findAll() {
+        Set<Militacion> milit = new HashSet<>();
 
         try {
             Connection con = connector.getMySQLConnection();

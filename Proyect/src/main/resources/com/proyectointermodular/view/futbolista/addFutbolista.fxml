@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="500.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.jugadoras.AddJugadora">
+<GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="500.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.futbolista.AddFutbolista">
    <rowConstraints>
       <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="BOTTOM" vgrow="SOMETIMES" />

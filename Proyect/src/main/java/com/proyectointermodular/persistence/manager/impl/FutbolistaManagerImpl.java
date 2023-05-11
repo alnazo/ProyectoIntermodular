@@ -10,9 +10,9 @@ import java.util.*;
 public class FutbolistaManagerImpl implements FutbolistaManager {
     private final static MySQLConnector connector = new MySQLConnector();
     @Override
-    public List<Futbolista> findAll() {
+    public Set<Futbolista> findAll() {
 
-        List<Futbolista> furbolista = new ArrayList<>();
+        Set<Futbolista> furbolista = new HashSet<>();
         try {
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
@@ -46,8 +46,7 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             Set<Futbolista> futbolistas = new HashSet<>();
 
             while (result.next()) {
-                Futbolista futbolista = new Futbolista(result);
-                futbolistas.add(futbolista);
+                futbolistas.add(new Futbolista(result));
             }
             con.close();
             return futbolistas;
@@ -70,8 +69,7 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             Set<Futbolista> futbolistas = new HashSet<>();
 
             while (result.next()) {
-                Futbolista futbolista = new Futbolista(result);
-                futbolistas.add(futbolista);
+                futbolistas.add(new Futbolista(result));
             }
             con.close();
             return futbolistas;
@@ -94,8 +92,7 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             Set<Futbolista> futbolistas = new HashSet<>();
 
             while (result.next()) {
-                Futbolista futbolista = new Futbolista(result);
-                futbolistas.add(futbolista);
+                futbolistas.add(new Futbolista(result));
             }
             con.close();
             return futbolistas;
@@ -119,8 +116,7 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             Set<Futbolista> futbolistas = new HashSet<>();
 
             while (result.next()) {
-                Futbolista futbolista = new Futbolista(result);
-                futbolistas.add(futbolista);
+                futbolistas.add(new Futbolista(result));
             }
             con.close();
             return futbolistas;
@@ -142,8 +138,7 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             Set<Futbolista> futbolistas = new HashSet<>();
 
             while (result.next()) {
-                Futbolista futbolista = new Futbolista(result);
-                futbolistas.add(futbolista);
+                futbolistas.add(new Futbolista(result));
             }
             con.close();
             return futbolistas;
@@ -159,7 +154,6 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
 
         int contador = 0;
         for (Map.Entry<String, String> entry : map.entrySet()) {
-            String key = entry.getKey();
             String value = entry.getValue();
             if (!value.equals("")) {
                 contador++;
@@ -191,8 +185,7 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             Set<Futbolista> futbolistas = new HashSet<>();
 
             while (result.next()) {
-                Futbolista futbolista = new Futbolista(result);
-                futbolistas.add(futbolista);
+                futbolistas.add(new Futbolista(result));
             }
             con.close();
             return futbolistas;

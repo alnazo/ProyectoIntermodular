@@ -1,10 +1,8 @@
 package com.proyectointermodular.persistence.manager;
 
-import java.sql.Connection;
-import java.util.List;
-import java.util.Set;
-
 import com.proyectointermodular.dto.Club;
+
+import java.util.Set;
 
 public interface ClubManager extends Manager<Club> {
 
@@ -20,9 +18,9 @@ public interface ClubManager extends Manager<Club> {
      * Busca todas los objetos en la BBDD de una lista de IDs.
      *
      * @param ids ID de clubs para mostrar.
-     * @return Una {@link List} de {@link Integer}.
+     * @return Una {@link Set} de {@link Integer}.
      */
-    List<Club> findAllByIds(Set<Integer> ids);
+    Set<Club> findAllByIds(Set<Integer> ids);
 
 
     /**
@@ -33,6 +31,21 @@ public interface ClubManager extends Manager<Club> {
      */
     Set<Club> findByName(String name);
 
+    /**
+     *
+     *
+     * @param date
+     * @return
+     */
+    Set<Club> findByDate(String date);
 
+
+    /**
+     *
+     *
+     * @param estadio
+     * @return
+     */
+    Set<Club> findByEstadio(String estadio);
 
 }

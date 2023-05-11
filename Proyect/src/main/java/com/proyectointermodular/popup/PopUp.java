@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 public class PopUp{
 
     public static boolean resultado;
+    public static boolean delete;
 
     public static void display(String msg) {
         Stage popupwindow = new Stage();
@@ -43,8 +44,8 @@ public class PopUp{
         popupwindow.setTitle("Aviso!");
 
         String msg = "¿Quieres añadir otro club?";
-        if(tipo.equals("jugadora")){
-            msg = "¿Quieres añadir otra jugadora?";
+        if(tipo.equals("futbolista")){
+            msg = "¿Quieres añadir otra futbolista?";
         }
 
         Label label1 = new Label(msg);
@@ -75,5 +76,40 @@ public class PopUp{
         popupwindow.showAndWait();
     }
 
+    public static void delete(){
+        Stage popupwindow = new Stage();
+
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Aviso!");
+
+        String msg = "¿Esta seguro de que quiere eliminar?";
+
+        Label label1 = new Label(msg);
+
+        Button button1 = new Button("Si");
+        Button button2 = new Button("No");
+
+        button1.setOnAction(e -> {
+            delete = true;
+            popupwindow.close();
+        });
+        button2.setOnAction(e -> {
+            delete = false;
+            popupwindow.close();
+        });
+
+        VBox layout = new VBox(10);
+        HBox layout2 = new HBox(10);
+
+        layout.getChildren().addAll(label1, layout2);
+        layout2.getChildren().addAll(button1, button2);
+
+        layout.setAlignment(Pos.CENTER);
+        layout2.setAlignment(Pos.CENTER);
+
+        Scene scene1 = new Scene(layout, 600, 250);
+        popupwindow.setScene(scene1);
+        popupwindow.showAndWait();
+    }
 
 }

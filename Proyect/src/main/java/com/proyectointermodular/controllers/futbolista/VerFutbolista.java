@@ -1,6 +1,8 @@
-package com.proyectointermodular.controllers.jugadoras;
+package com.proyectointermodular.controllers.futbolista;
 
 import com.proyectointermodular.controllers.MenuPrincipal;
+import com.proyectointermodular.controllers.militacion.VerMilitacion;
+import com.proyectointermodular.dao.FutbolistaDAO;
 import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
 import com.proyectointermodular.popup.PopUp;
@@ -10,11 +12,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.sql.Date;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 
-public class VerJugadora extends MenuPrincipal {
+public class VerFutbolista extends MenuPrincipal {
 
     @FXML
     private TableView<Futbolista> tabla;
@@ -42,6 +47,7 @@ public class VerJugadora extends MenuPrincipal {
 
     MenuItem o1 = new MenuItem("Editar");
     MenuItem o2 = new MenuItem("Eliminar");
+    SeparatorMenuItem sep = new SeparatorMenuItem();
 
     @FXML
     public void initialize() {
@@ -52,22 +58,33 @@ public class VerJugadora extends MenuPrincipal {
         t_nif.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("nif"));
 
         FutbolistaManagerImpl search = new FutbolistaManagerImpl();
-        List<Futbolista> list = search.findAll();
+        Set<Futbolista> list = search.findAll();
         ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
         tabla.setItems(oblist);
 
-        tabla.setContextMenu(new ContextMenu(o1, o2));
+        tabla.setContextMenu(new ContextMenu(f3, sep, o1, o2));
 
         tabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            o1.setOnAction( e -> {
+            o1.setOnAction(e -> {
                 edit(newValue);
             });
-            o2.setOnAction( e -> {
+            o2.setOnAction(e -> {
                 eliminar(newValue);
+            });
+            f3.setOnAction(e -> {
+                verMilitados(newValue);
             });
         });
     }
 
+    private void verMilitados(Futbolista e){
+        try {
+            verMilitacion();
+            new VerMilitacion().clubsMilita(e);
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
+    }
 
     @FXML
     private void search() {
@@ -90,32 +107,27 @@ public class VerJugadora extends MenuPrincipal {
                 initialize();
             } else if (s_nombre.equals("") && s_apellido.equals("") && s_nacimiento.equals("") && s_nacionalidad.equals("")) {
 
-                FutbolistaManagerImpl search = new FutbolistaManagerImpl();
-                Set<Futbolista> list = search.findByNif(s_nif);
+                Set<Futbolista> list = new FutbolistaManagerImpl().findByNif(s_nif);
                 ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
 
                 tabla.setItems(oblist);
             } else if (s_nif.equals("") && s_apellido.equals("") && s_nacimiento.equals("") && s_nacionalidad.equals("")) {
-                FutbolistaManagerImpl search = new FutbolistaManagerImpl();
-                Set<Futbolista> list = search.findByName(s_nombre);
+                Set<Futbolista> list = new FutbolistaManagerImpl().findByName(s_nombre);
                 ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
 
                 tabla.setItems(oblist);
             } else if (s_nif.equals("") && s_nombre.equals("") && s_nacimiento.equals("") && s_nacionalidad.equals("")) {
-                FutbolistaManagerImpl search = new FutbolistaManagerImpl();
-                Set<Futbolista> list = search.findBySurname(s_apellido);
+                Set<Futbolista> list = new FutbolistaManagerImpl().findBySurname(s_apellido);
                 ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
 
                 tabla.setItems(oblist);
             } else if (s_nif.equals("") && s_nombre.equals("") && s_apellido.equals("") && s_nacionalidad.equals("")) {
-                FutbolistaManagerImpl search = new FutbolistaManagerImpl();
-                Set<Futbolista> list = search.findByDate(s_nacimiento);
+                Set<Futbolista> list = new FutbolistaManagerImpl().findByDate(s_nacimiento);
                 ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
 
                 tabla.setItems(oblist);
             } else if (s_nif.equals("") && s_nombre.equals("") && s_apellido.equals("") && s_nacimiento.equals("")) {
-                FutbolistaManagerImpl search = new FutbolistaManagerImpl();
-                Set<Futbolista> list = search.findByNacionalidad(s_nacionalidad);
+                Set<Futbolista> list = new FutbolistaManagerImpl().findByNacionalidad(s_nacionalidad);
                 ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
 
                 tabla.setItems(oblist);
@@ -130,8 +142,7 @@ public class VerJugadora extends MenuPrincipal {
                     }
                 };
 
-                FutbolistaManagerImpl search = new FutbolistaManagerImpl();
-                Set<Futbolista> list = search.findByOptions(valores);
+                Set<Futbolista> list = new FutbolistaManagerImpl().findByOptions(valores);
                 ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
 
                 tabla.setItems(oblist);
@@ -145,8 +156,12 @@ public class VerJugadora extends MenuPrincipal {
     }
 
     public void eliminar(Futbolista f) {
-
-        tabla.refresh();
+        PopUp.delete();
+        if (PopUp.delete) {
+            new FutbolistaDAO().delete(f.getNif());
+            initialize();
+            PopUp.delete = false;
+        }
     }
 
 }

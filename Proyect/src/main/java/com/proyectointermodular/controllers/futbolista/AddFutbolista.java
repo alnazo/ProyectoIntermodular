@@ -1,4 +1,4 @@
-package com.proyectointermodular.controllers.jugadoras;
+package com.proyectointermodular.controllers.futbolista;
 
 import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dao.FutbolistaDAO;
@@ -13,7 +13,7 @@ import java.sql.Date;
 import java.util.Set;
 
 
-public class AddJugadora extends MenuPrincipal {
+public class AddFutbolista extends MenuPrincipal {
 
     @FXML
     private TextField nombre;
@@ -41,17 +41,18 @@ public class AddJugadora extends MenuPrincipal {
                 PopUp.display("El NIF que ha introducio no es correcto.");
             } else {
                 Date nac = Date.valueOf(s_nacimiento);
-                Futbolista jugadora = new Futbolista(s_nombre, s_apellido, nac, s_nacionalidad, s_nif);
+                Futbolista futbolista = new Futbolista(s_nombre, s_apellido, nac, s_nacionalidad, s_nif);
 
                 Set<Futbolista> list = new FutbolistaManagerImpl().findByNif(s_nif);
                 if(list.size() > 0){
                     PopUp.display("El NIF que esta introduciendo esta repetido");
                 } else {
-                    PopUp.add("jugadora");
-                    FutbolistaDAO.create(jugadora);
+                    PopUp.add("futbolista");
+                    FutbolistaDAO.create(futbolista);
                     try {
                         if (PopUp.resultado) {
                             addPlayer();
+                            PopUp.resultado = false;
                         } else {
                             verJugadoras();
                         }

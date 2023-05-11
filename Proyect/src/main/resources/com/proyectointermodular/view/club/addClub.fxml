@@ -29,11 +29,11 @@
             <Font size="36.0" />
         </font>
     </Text>
-    <Label text="Nombre del estadio" GridPane.columnIndex="3" GridPane.rowIndex="1" />
     <Label text="Nombre del club" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <Label text="Fecha de fundacion" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-    <TextField maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-    <TextField maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <TextField maxWidth="150.0" promptText="yyyy-mm-dd" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-    <Button onAction="#enviar" maxHeight="50.0" maxWidth="120.0" minHeight="50.0" minWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Guardar" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+    <Label text="Nombre del estadio" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+    <TextField fx:id="nombre" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="creacion" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" promptText="yyyy-mm-dd" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+    <TextField fx:id="estadio" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+    <Button maxHeight="50.0" maxWidth="120.0" minHeight="50.0" minWidth="120.0" mnemonicParsing="false" onAction="#enviar" prefHeight="50.0" prefWidth="120.0" text="Guardar" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 </GridPane>

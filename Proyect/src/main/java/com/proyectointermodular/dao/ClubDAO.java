@@ -1,48 +1,46 @@
 package com.proyectointermodular.dao;
 
-import com.proyectointermodular.dto.Futbolista;
+import com.proyectointermodular.dto.Club;
 import com.proyectointermodular.persistence.connector.MySQLConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class FutbolistaDAO {
+public class ClubDAO {
 
     private final static MySQLConnector connector = new MySQLConnector();
-
-    public static void create(Futbolista futbolista){
+    public static void create(Club club){
         try {
             Connection con = connector.getMySQLConnection();
 
-            String sql = "INSERT INTO futbolista VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO club (nombre, creacion, estadio) VALUES (?, ?, ?)";
 
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, futbolista.getNombre());
-            stmt.setString(2, futbolista.getApellido());
-            stmt.setDate(3, futbolista.getNacimiento());
-            stmt.setString(4, futbolista.getNacionalidad());
-            stmt.setString(5, futbolista.getNif());
+            stmt.setString(1, club.getNombre());
+            stmt.setDate(2, club.getCreacion());
+            stmt.setString(3, club.getEstadio());
 
             stmt.execute();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public static void update(Futbolista futbolista){
+    public void update(Club club){
 
     }
-    public void delete(String nif){
+
+    public void delete(Integer id){
         try{
             Connection con = connector.getMySQLConnection();
 
-            String sql = "DELETE FROM futbolista WHERE (nif = ?)";
+            String sql = "DELETE FROM club WHERE (id = ?)";
 
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, nif);
+            stmt.setInt(1, id);
 
             stmt.executeUpdate();
             con.close();
@@ -51,4 +49,5 @@ public class FutbolistaDAO {
             e.printStackTrace();
         }
     }
+
 }
