@@ -1,7 +1,6 @@
 package com.proyectointermodular.controllers.club;
 
 import com.proyectointermodular.controllers.MenuPrincipal;
-import com.proyectointermodular.controllers.militacion.VerMilitacion;
 import com.proyectointermodular.dao.ClubDAO;
 import com.proyectointermodular.dto.Club;
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,7 +47,6 @@ public class VerClub extends MenuPrincipal {
 
     MenuItem o1 = new MenuItem("Editar");
     MenuItem o2 = new MenuItem("Eliminar");
-    SeparatorMenuItem sep = new SeparatorMenuItem();
 
     @FXML
     public void initialize() {
@@ -63,8 +60,7 @@ public class VerClub extends MenuPrincipal {
 
         tabla.setItems(oblist);
 
-        tabla.setContextMenu(new ContextMenu(c3, sep, o1, o2));
-
+        tabla.setContextMenu(new ContextMenu(o1, o2));
         tabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             o1.setOnAction(e -> {
                 edit(newValue);
@@ -72,20 +68,12 @@ public class VerClub extends MenuPrincipal {
             o2.setOnAction(e -> {
                 eliminar(newValue);
             });
-            c3.setOnAction(e -> {
-                verMilitados(newValue);
-            });
         });
 
-    }
-
-    private void verMilitados(Club e){
-        try {
-            verMilitacion();
-            new VerMilitacion().futbolistaMilita(e);
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
+        tabla.setOnMouseClicked(event -> {
+            Club selectClub = tabla.getSelectionModel().getSelectedItem();
+            windowsGeneric.getParent().getParent().lookup("#c3").setUserData(selectClub);
+        });
     }
 
     @FXML

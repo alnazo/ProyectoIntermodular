@@ -1,10 +1,9 @@
 package com.proyectointermodular.controllers.militacion;
 
 import com.proyectointermodular.controllers.MenuPrincipal;
-import com.proyectointermodular.dto.Militacion;
-import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.dto.Club;
-
+import com.proyectointermodular.dto.Futbolista;
+import com.proyectointermodular.dto.Militacion;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -44,7 +43,6 @@ public class VerMilitacion extends MenuPrincipal {
 
     @FXML
     public void futbolistaMilita(Club c){
-        text.setText("Jugadoras que milita");
         nombreC.setVisible(false);
         creacionC.setVisible(false);
         estadioC.setVisible(false);
@@ -56,7 +54,6 @@ public class VerMilitacion extends MenuPrincipal {
 
     @FXML
     public void clubsMilita(Futbolista f){
-        text.setText("Clubs que milita");
         nifF.setVisible(false);
         nombreF.setVisible(false);
         apellidoF.setVisible(false);

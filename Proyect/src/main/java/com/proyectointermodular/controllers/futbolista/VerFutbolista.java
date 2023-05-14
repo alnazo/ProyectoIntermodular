@@ -1,7 +1,6 @@
 package com.proyectointermodular.controllers.futbolista;
 
 import com.proyectointermodular.controllers.MenuPrincipal;
-import com.proyectointermodular.controllers.militacion.VerMilitacion;
 import com.proyectointermodular.dao.FutbolistaDAO;
 import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +45,6 @@ public class VerFutbolista extends MenuPrincipal {
 
     MenuItem o1 = new MenuItem("Editar");
     MenuItem o2 = new MenuItem("Eliminar");
-    SeparatorMenuItem sep = new SeparatorMenuItem();
 
     @FXML
     public void initialize() {
@@ -62,7 +59,7 @@ public class VerFutbolista extends MenuPrincipal {
         ObservableList<Futbolista> oblist = FXCollections.observableArrayList(list);
         tabla.setItems(oblist);
 
-        tabla.setContextMenu(new ContextMenu(f3, sep, o1, o2));
+        tabla.setContextMenu(new ContextMenu(o1, o2));
 
         tabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             o1.setOnAction(e -> {
@@ -71,19 +68,12 @@ public class VerFutbolista extends MenuPrincipal {
             o2.setOnAction(e -> {
                 eliminar(newValue);
             });
-            f3.setOnAction(e -> {
-                verMilitados(newValue);
-            });
         });
-    }
 
-    private void verMilitados(Futbolista e){
-        try {
-            verMilitacion();
-            new VerMilitacion().clubsMilita(e);
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
+        tabla.setOnMouseClicked(event -> {
+            Futbolista selectFutbolista = tabla.getSelectionModel().getSelectedItem();
+            windowsGeneric.getParent().getParent().lookup("#f3").setUserData(selectFutbolista);
+        });
     }
 
     @FXML

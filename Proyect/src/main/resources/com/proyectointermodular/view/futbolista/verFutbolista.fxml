@@ -9,41 +9,52 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.futbolista.VerFutbolista">
-  <columnConstraints>
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" />
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0" prefWidth="83.0" />
-  </columnConstraints>
-  <rowConstraints>
-      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints />
-      <RowConstraints />
-  </rowConstraints>
-      <TableView fx:id="tabla" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="500.0" GridPane.columnSpan="6" GridPane.rowIndex="3">
+<GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="1080.0"
+          prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.proyectointermodular.controllers.futbolista.VerFutbolista">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0"
+                           prefWidth="100.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0"
+                           prefWidth="100.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0"
+                           prefWidth="83.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints/>
+        <RowConstraints/>
+    </rowConstraints>
+    <TableView fx:id="tabla" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0"
+               minWidth="500.0" GridPane.columnSpan="6" GridPane.rowIndex="3">
         <columns>
-          <TableColumn fx:id="t_nif" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="NIF" />
-          <TableColumn fx:id="t_nombre" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Nombre" />
-         <TableColumn fx:id="t_apellido" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Apellido" />
-         <TableColumn fx:id="t_nacimiento" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Fecha nacimiento" />
-         <TableColumn fx:id="t_nacionalidad" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0" text="Nacionalidad" />
+            <TableColumn fx:id="t_nif" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0"
+                         text="NIF"/>
+            <TableColumn fx:id="t_nombre" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0"
+                         text="Nombre"/>
+            <TableColumn fx:id="t_apellido" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0"
+                         text="Apellido"/>
+            <TableColumn fx:id="t_nacimiento" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0"
+                         text="Fecha nacimiento"/>
+            <TableColumn fx:id="t_nacionalidad" maxWidth="1.7976931348623157E308" minWidth="145.0" prefWidth="-1.0"
+                         text="Nacionalidad"/>
         </columns>
-      </TableView>
-      <Label text="NIF" />
-      <Label text="Nombre" GridPane.columnIndex="1" />
-      <Label text="Apellido" GridPane.columnIndex="2" />
-      <Label text="Fecha nacimiento" GridPane.columnIndex="3" />
-      <Label text="Nacionalidad" GridPane.columnIndex="4" />
-      <Button mnemonicParsing="false" onAction="#search" text="Buscar" GridPane.columnIndex="5" GridPane.rowSpan="2" />
-      <TextField fx:id="nif" GridPane.rowIndex="1" />
-      <TextField fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField fx:id="apellido" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <TextField fx:id="nacimiento" promptText="yyyy-mm-dd" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <TextField fx:id="nacionalidad" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+    </TableView>
+    <Label text="NIF"/>
+    <Label text="Nombre" GridPane.columnIndex="1"/>
+    <Label text="Apellido" GridPane.columnIndex="2"/>
+    <Label text="Fecha nacimiento" GridPane.columnIndex="3"/>
+    <Label text="Nacionalidad" GridPane.columnIndex="4"/>
+    <Button mnemonicParsing="false" onAction="#search" text="Buscar" GridPane.columnIndex="5" GridPane.rowSpan="2"/>
+    <TextField fx:id="nif" GridPane.rowIndex="1"/>
+    <TextField fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField fx:id="apellido" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+    <TextField fx:id="nacimiento" promptText="yyyy-mm-dd" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    <TextField fx:id="nacionalidad" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
 </GridPane>

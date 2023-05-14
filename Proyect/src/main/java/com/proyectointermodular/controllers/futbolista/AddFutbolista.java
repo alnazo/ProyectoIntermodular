@@ -54,7 +54,7 @@ public class AddFutbolista extends MenuPrincipal {
                             addPlayer();
                             PopUp.resultado = false;
                         } else {
-                            verJugadoras();
+                            verFutbolistas();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
