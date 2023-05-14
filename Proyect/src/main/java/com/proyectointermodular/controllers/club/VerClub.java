@@ -1,6 +1,8 @@
 package com.proyectointermodular.controllers.club;
 
+import com.proyectointermodular.App;
 import com.proyectointermodular.controllers.MenuPrincipal;
+import com.proyectointermodular.controllers.militacion.VerMilitacion;
 import com.proyectointermodular.dao.ClubDAO;
 import com.proyectointermodular.dto.Club;
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
@@ -8,8 +10,14 @@ import com.proyectointermodular.popup.PopUp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.sql.Date;
 import java.util.HashMap;
@@ -72,7 +80,10 @@ public class VerClub extends MenuPrincipal {
 
         tabla.setOnMouseClicked(event -> {
             Club selectClub = tabla.getSelectionModel().getSelectedItem();
-            windowsGeneric.getParent().getParent().lookup("#c3").setUserData(selectClub);
+            super.club = true;
+            windowsGeneric.getParent().getParent().lookup("#c3").setOnMouseClicked(mouseEvent -> {
+                new VerMilitacion().futbolistaMilita(selectClub);
+            });
         });
     }
 
@@ -142,8 +153,66 @@ public class VerClub extends MenuPrincipal {
     }
 
     public void edit(Club c) {
+        Stage popupwindow = new Stage();
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Editar Club");
 
-        tabla.refresh();
+        Label Lnom = new Label("Nombre");
+        Label Lcre = new Label("Año fundacion");
+        Label Lest = new Label("Estadio");
+        TextField nom = new TextField();
+        TextField cre = new TextField();
+        TextField est = new TextField();
+        Button send = new Button("Enviar");
+
+        nom.setText(c.getNombre());
+        cre.setText(c.getCreacion().toString());
+        est.setText(c.getEstadio());
+
+        VBox layout = new VBox(10);
+        HBox layout2 = new HBox(10);
+        VBox v1 = new VBox(10);
+        VBox v2 = new VBox(10);
+        VBox v3 = new VBox(10);
+
+        layout.getChildren().addAll(layout2, send);
+        layout2.getChildren().addAll(v1, v2, v3);
+        v1.getChildren().addAll(Lnom, nom);
+        v2.getChildren().addAll(Lcre, cre);
+        v3.getChildren().addAll(Lest, est);
+
+        layout.setAlignment(Pos.CENTER);
+        layout2.setAlignment(Pos.CENTER);
+        v1.setAlignment(Pos.CENTER);
+        v2.setAlignment(Pos.CENTER);
+        v3.setAlignment(Pos.CENTER);
+
+        send.setOnAction(event -> {
+            String s_nom = nom.getText();
+            String s_cre = cre.getText();
+            String s_est = est.getText();
+            if (!s_nom.equals("") || s_nom.equals(c.getNombre())
+                    && !s_cre.equals("") || s_cre.equals(c.getCreacion().toString())
+                    && !s_est.equals("") || s_est.equals(c.getEstadio())) {
+                if (!s_cre.matches("((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])") && !s_cre.equals("")) {
+                    PopUp.display("La fecha que se ha introducido no corresponde al formato yyyy-mm-dd (Año-Mes-Día)");
+                } else {
+                    Club cl = new Club(c.getId(), s_nom, Date.valueOf(s_cre), s_est);
+                    new ClubDAO().update(cl);
+                    popupwindow.close();
+                }
+            } else {
+                PopUp.display("No pueden haber campos vacios");
+            }
+        });
+
+        Scene scene1 = new Scene(layout, 600, 250);
+        popupwindow.getIcons().add(App.getIcon());
+        popupwindow.setScene(scene1);
+        popupwindow.showAndWait();
+
+        initialize();
+
     }
 
     public void eliminar(Club c) {

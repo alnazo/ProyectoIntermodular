@@ -1,9 +1,6 @@
 package com.proyectointermodular.controllers;
 
 import com.proyectointermodular.App;
-import com.proyectointermodular.dto.Club;
-import com.proyectointermodular.dto.Futbolista;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -26,24 +23,31 @@ public class MenuPrincipal {
     @FXML
     private Button f3;
     @FXML
-    private Button c3;
+    public Button c3;
     @FXML
     public MenuItem closeMenu;
+    public boolean club;
+    @FXML
+    private void initialize(){
 
+    }
     @FXML
     private void closeMenu() {
         System.exit(0);
     }
 
     private void changeView(String file) throws IOException {
+
         if (!c3.disableProperty().getValue()) {
             c3.disableProperty().setValue(true);
             c3.opacityProperty().setValue(0);
         }
+
         if (!f3.disableProperty().getValue()) {
             f3.disableProperty().setValue(true);
             f3.opacityProperty().setValue(0);
         }
+
         windowsGeneric.getChildren().clear();
         windowsGeneric.getChildren().add(FXMLLoader.load(App.class.getResource("view/" + file + ".fxml")));
     }
@@ -78,12 +82,6 @@ public class MenuPrincipal {
 
     @FXML
     public void verMilitados() throws IOException {
-        Club c = (Club) c3.getUserData();
-        Futbolista f = (Futbolista) f3.getUserData();
-        System.out.println(c);
-        System.out.println(f);
-        //changeView("militacion/verMilitacion");
+        changeView("militacion/verMilitacion");
     }
-
-
 }

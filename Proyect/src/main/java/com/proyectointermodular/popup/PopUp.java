@@ -1,5 +1,6 @@
 package com.proyectointermodular.popup;
 
+import com.proyectointermodular.App;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -73,6 +74,7 @@ public class PopUp{
 
         Scene scene1 = new Scene(layout, 600, 250);
         popupwindow.setScene(scene1);
+        popupwindow.getIcons().add(App.getIcon());
         popupwindow.showAndWait();
     }
 
@@ -109,6 +111,7 @@ public class PopUp{
 
         Scene scene1 = new Scene(layout, 600, 250);
         popupwindow.setScene(scene1);
+        popupwindow.getIcons().add(App.getIcon());
         popupwindow.showAndWait();
     }
 

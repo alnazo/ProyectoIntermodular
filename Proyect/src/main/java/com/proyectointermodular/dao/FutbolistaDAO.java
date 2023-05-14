@@ -32,8 +32,24 @@ public class FutbolistaDAO {
         }
     }
 
-    public static void update(Futbolista futbolista){
+    public void update(Futbolista futbolista){
+        try {
+            Connection con = connector.getMySQLConnection();
 
+            String sql = "UPDATE futbolista SET nombre = ?, apellido = ?, nacimiento = ?, nacionalidad = ? WHERE nif = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setString(1, futbolista.getNombre());
+            stmt.setString(2, futbolista.getApellido());
+            stmt.setDate(3, futbolista.getNacimiento());
+            stmt.setString(4, futbolista.getNacionalidad());
+            stmt.setString(5, futbolista.getNif());
+
+            stmt.execute();
+            con.close();
+        } catch (ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+        }
     }
     public void delete(String nif){
         try{

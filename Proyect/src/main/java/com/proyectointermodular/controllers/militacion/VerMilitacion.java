@@ -7,6 +7,7 @@ import com.proyectointermodular.dto.Militacion;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 import java.sql.Date;
@@ -42,11 +43,34 @@ public class VerMilitacion extends MenuPrincipal {
     private TableColumn<Club, String> estadioC;
 
     @FXML
-    public void futbolistaMilita(Club c){
-        nombreC.setVisible(false);
-        creacionC.setVisible(false);
-        estadioC.setVisible(false);
+    public void initialize(){
+        nombreF.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("nombre"));
+        apellidoF.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("apellido"));
+        nacimientoF.setCellValueFactory(new PropertyValueFactory<Futbolista, Date>("nacimiento"));
+        nacionalidadF.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("nacionalidad"));
+        nifF.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("nif"));
+        nombreC.setCellValueFactory(new PropertyValueFactory<Club, String>("nombre"));
+        creacionC.setCellValueFactory(new PropertyValueFactory<Club, Date>("creacion"));
+        estadioC.setCellValueFactory(new PropertyValueFactory<Club, String>("estadio"));
 
+        if (super.club){
+            nifF.setVisible(false);
+            nombreF.setVisible(false);
+            apellidoF.setVisible(false);
+            nacimientoF.setVisible(false);
+            nacionalidadF.setVisible(false);
+            super.club = false;
+        } else {
+            nombreC.setVisible(false);
+            creacionC.setVisible(false);
+            estadioC.setVisible(false);
+        }
+
+
+    }
+    @FXML
+    public void futbolistaMilita(Club c){
+        System.out.println(c);
 
 
 
@@ -54,13 +78,7 @@ public class VerMilitacion extends MenuPrincipal {
 
     @FXML
     public void clubsMilita(Futbolista f){
-        nifF.setVisible(false);
-        nombreF.setVisible(false);
-        apellidoF.setVisible(false);
-        nacimientoF.setVisible(false);
-        nacionalidadF.setVisible(false);
-
-
+        System.out.println(f);
 
 
     }
