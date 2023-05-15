@@ -1,5 +1,7 @@
 package com.proyectointermodular.persistence.manager.impl;
 
+import com.proyectointermodular.dto.Club;
+import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.dto.Militacion;
 import com.proyectointermodular.persistence.connector.MySQLConnector;
 import com.proyectointermodular.persistence.manager.MilitacionManager;
@@ -58,6 +60,29 @@ public class MilitacionManagerImpl implements MilitacionManager {
 
             return milit;
 
+        } catch (ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Set<Militacion> findByFutbolista(Futbolista futbolista){
+
+        String sql = String.format("SELECT * FROM militacion WHERE nif_futbolista = '%s'", futbolista.getNif());
+
+        try{
+            Connection con = connector.getMySQLConnection();
+            Statement stmt = con.createStatement();
+
+            ResultSet result = stmt.executeQuery(sql);
+            Set<Militacion> milit = new HashSet<>();
+
+            while(result.next()){
+                milit.add(new Militacion(result));
+            }
+            con.close();
+            return milit;
         } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
             return null;

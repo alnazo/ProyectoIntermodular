@@ -31,4 +31,8 @@ public class Futbolista {
         }
     }
 
+    public String getNacimientoString(){
+        return this.nacimiento.toString();
+    }
+
 }

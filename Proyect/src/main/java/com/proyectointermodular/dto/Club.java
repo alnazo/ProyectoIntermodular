@@ -28,5 +28,8 @@ public class Club {
         }
     }
 
+    public String getCreacionString(){
+        return this.creacion.toString();
+    }
 
 }

@@ -1,9 +1,9 @@
 package com.proyectointermodular.persistence.manager;
 
-import java.sql.Connection;
-import java.util.Set;
-
+import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.dto.Militacion;
+
+import java.util.Set;
 
 public interface MilitacionManager extends Manager<Militacion> {
     
@@ -14,5 +14,12 @@ public interface MilitacionManager extends Manager<Militacion> {
      * @return Un {@link Set} de {@link Militacion}
      */
     Set<Militacion> findByTemporada(String temporada);
+
+    /**
+     *
+     * @param futbolista Objeto Futbolista para realizacion de la busqueda.
+     * @return Un {@link Set} de {@link Militacion}
+     */
+    Set<Militacion> findByFutbolista(Futbolista futbolista);
 
 }

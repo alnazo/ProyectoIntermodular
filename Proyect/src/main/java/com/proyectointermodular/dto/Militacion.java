@@ -2,7 +2,10 @@ package com.proyectointermodular.dto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Set;
 
+import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
+import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +16,16 @@ import lombok.NoArgsConstructor;
 public class Militacion {
     
     private String temporada; // YYYY/YYYYY
-    private String nif_Furbolista;
-    private int id_Club;
+    private Futbolista nif_Furbolista;
+    private Club id_Club;
 
-    public Militacion(ResultSet result){    
+    public Militacion(ResultSet result){
         try {
+            Set<Futbolista> li = new FutbolistaManagerImpl().findByNif(result.getString("nif_futbolista"));
+            Futbolista fut = li.iterator().next();
             this.temporada = result.getString("temporada");
-            this.nif_Furbolista = result.getString("nif_furbolista");
-            this.id_Club = result.getInt("id_club");
+            this.nif_Furbolista = fut;
+            this.id_Club = new ClubManagerImpl().findById(result.getInt("id_club"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

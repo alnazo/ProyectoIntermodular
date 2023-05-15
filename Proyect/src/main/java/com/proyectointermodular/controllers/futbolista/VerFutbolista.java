@@ -80,10 +80,7 @@ public class VerFutbolista extends MenuPrincipal {
 
         tabla.setOnMouseClicked(event -> {
             Futbolista selectFutbolista = tabla.getSelectionModel().getSelectedItem();
-            super.club = false;
-            windowsGeneric.getParent().getParent().lookup("#f3").setOnMouseClicked(mouseEvent -> {
-                new VerMilitacion().clubsMilita(selectFutbolista);
-            });
+            windowsGeneric.getParent().getParent().lookup("#f3").setUserData(selectFutbolista);
         });
 
     }

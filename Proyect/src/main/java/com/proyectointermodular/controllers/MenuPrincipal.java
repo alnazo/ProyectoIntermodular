@@ -21,12 +21,11 @@ public class MenuPrincipal {
     @FXML
     public Button verClubs;
     @FXML
-    private Button f3;
+    public Button f3;
     @FXML
     public Button c3;
     @FXML
     public MenuItem closeMenu;
-    public boolean club;
     @FXML
     private void initialize(){
 
@@ -49,7 +48,9 @@ public class MenuPrincipal {
         }
 
         windowsGeneric.getChildren().clear();
-        windowsGeneric.getChildren().add(FXMLLoader.load(App.class.getResource("view/" + file + ".fxml")));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + file + ".fxml"));
+        GridPane newPanel = loader.load();
+        windowsGeneric.getChildren().add(newPanel);
     }
 
     public void inicio() throws IOException {
@@ -81,7 +82,12 @@ public class MenuPrincipal {
     }
 
     @FXML
-    public void verMilitados() throws IOException {
+    public void verMilitadosF() throws IOException {
         changeView("militacion/verMilitacion");
     }
+    @FXML
+    public void verMilitadosC() throws IOException {
+        changeView("militacion/verMilitacion");
+    }
+
 }
