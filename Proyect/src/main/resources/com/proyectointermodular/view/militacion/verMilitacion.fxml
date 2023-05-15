@@ -9,45 +9,43 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0"
-          prefHeight="1080.0" prefWidth="1920.0"
-          xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="com.proyectointermodular.controllers.militacion.VerMilitacion">
+<GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="1080.0"
+          prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.militacion.VerMilitacion">
     <rowConstraints>
-        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-        <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="200.0" prefHeight="377.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="200.0" prefHeight="377.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
         <columns>
-            <TableColumn fx:id="temp" prefWidth="75.0" text="Temporada"/>
-            <TableColumn fx:id="nifF" prefWidth="75.0" text="NIF"/>
-            <TableColumn fx:id="nombreF" prefWidth="75.0" text="Nombre"/>
-            <TableColumn fx:id="apellidoF" prefWidth="75.0" text="Apelllido"/>
-            <TableColumn fx:id="nacimientoF" prefWidth="75.0" text="Fecha Nacimiento"/>
-            <TableColumn fx:id="nacionalidadF" prefWidth="75.0" text="Nacionalidad"/>
-            <TableColumn fx:id="nombreC" prefWidth="75.0" text="Club"/>
-            <TableColumn fx:id="creacionC" prefWidth="75.0" text="Fecha creacion"/>
-            <TableColumn fx:id="estadioC" prefWidth="75.0" text="Estadio"/>
+            <TableColumn fx:id="temp" prefWidth="75.0" text="Temporada" />
+            <TableColumn fx:id="nifF" prefWidth="75.0" text="NIF" />
+            <TableColumn fx:id="nombreF" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="apellidoF" prefWidth="75.0" text="Apelllido" />
+            <TableColumn fx:id="nacimientoF" prefWidth="75.0" text="Fecha Nacimiento" />
+            <TableColumn fx:id="nacionalidadF" prefWidth="75.0" text="Nacionalidad" />
+            <TableColumn fx:id="nombreC" prefWidth="75.0" text="Club" />
+            <TableColumn fx:id="creacionC" prefWidth="75.0" text="Fecha creacion" />
+            <TableColumn fx:id="estadioC" prefWidth="75.0" text="Estadio" />
         </columns>
     </TableView>
-    <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0">
+    <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
         <font>
-            <Font size="36.0"/>
+            <Font size="36.0" />
         </font>
     </Text>
     <GridPane GridPane.rowIndex="1">
         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
-            <Button fx:id="cdf" onAction="#futbolistaMilita" mnemonicParsing="false" text="Cargar datos Futbolistas"/>
-            <Button fx:id="cdc" onAction="#clubsMilita" mnemonicParsing="false" text="Cargar datos Clubs" GridPane.columnIndex="1"/>
+            <Button fx:id="cdf" mnemonicParsing="false" onAction="#futbolistaMilita" text="Cargar datos Futbolistas" />
+            <Button fx:id="cdc" mnemonicParsing="false" onAction="#clubsMilita" text="Cargar datos Clubs" GridPane.columnIndex="1" />
     </GridPane>
 </GridPane>

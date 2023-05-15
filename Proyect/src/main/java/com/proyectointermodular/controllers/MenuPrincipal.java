@@ -1,6 +1,7 @@
 package com.proyectointermodular.controllers;
 
 import com.proyectointermodular.App;
+import com.proyectointermodular.controllers.militacion.VerMilitacion;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -26,10 +27,12 @@ public class MenuPrincipal {
     public Button c3;
     @FXML
     public MenuItem closeMenu;
+
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
+
     @FXML
     private void closeMenu() {
         System.exit(0);
@@ -84,10 +87,18 @@ public class MenuPrincipal {
     @FXML
     public void verMilitadosF() throws IOException {
         changeView("militacion/verMilitacion");
+        windowsGeneric.lookup("#cdc").disableProperty().setValue(true);
     }
+
     @FXML
     public void verMilitadosC() throws IOException {
         changeView("militacion/verMilitacion");
+        windowsGeneric.lookup("#cdf").disableProperty().setValue(true);
+    }
+
+    @FXML
+    public void addMilitacion() throws IOException{
+        changeView("militacion/addMilitacion");
     }
 
 }

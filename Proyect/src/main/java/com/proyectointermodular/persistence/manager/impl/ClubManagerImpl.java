@@ -16,7 +16,7 @@ public class ClubManagerImpl implements ClubManager {
     private final static MySQLConnector connector = new MySQLConnector();
 
     @Override
-    public Set<Club> findAll(){
+    public Set<Club> findAll() {
         Set<Club> clubs = new HashSet<>();
 
         try {
@@ -24,7 +24,7 @@ public class ClubManagerImpl implements ClubManager {
             Statement stmt = con.createStatement();
 
             ResultSet result = stmt.executeQuery("SELECT * FROM club");
-            while (result.next()){
+            while (result.next()) {
                 clubs.add(new Club(result));
             }
 
@@ -32,7 +32,7 @@ public class ClubManagerImpl implements ClubManager {
 
             return clubs;
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;
         }
@@ -40,7 +40,7 @@ public class ClubManagerImpl implements ClubManager {
     }
 
     @Override
-    public Club findById(Integer id){
+    public Club findById(Integer id) {
         String sql = "SELECT * FROM club WHERE ID = ?";
 
         try {
@@ -52,7 +52,7 @@ public class ClubManagerImpl implements ClubManager {
 
             Club club = null;
 
-            while (result.next()){
+            while (result.next()) {
                 club = new Club(result);
             }
 
@@ -60,7 +60,7 @@ public class ClubManagerImpl implements ClubManager {
 
             return club;
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;
         }
@@ -68,9 +68,9 @@ public class ClubManagerImpl implements ClubManager {
     }
 
     @Override
-    public Set<Club> findAllByIds(Set<Integer> ids){
+    public Set<Club> findAllByIds(Set<Integer> ids) {
 
-        String sql = String.format("SELECT * FROM club WHERE id IN (%s)",ids.stream().map(data -> "\""+data+"\"").collect(Collectors.joining(", ")));
+        String sql = String.format("SELECT * FROM club WHERE id IN (%s)", ids.stream().map(data -> "\"" + data + "\"").collect(Collectors.joining(", ")));
 
         try {
             Connection con = connector.getMySQLConnection();
@@ -80,7 +80,7 @@ public class ClubManagerImpl implements ClubManager {
 
             Set<Club> clubs = new HashSet<>();
 
-            while (result.next()){
+            while (result.next()) {
                 Club club = new Club(result);
                 clubs.add(club);
             }
@@ -89,14 +89,14 @@ public class ClubManagerImpl implements ClubManager {
 
             return clubs;
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
 
     @Override
-    public Set<Club> findByName(String name){
+    public Set<Club> findByName(String name) {
 
         String sql = "SELECT * FROM club WHERE nombre LIKE ?";
 
@@ -104,11 +104,11 @@ public class ClubManagerImpl implements ClubManager {
             Connection con = connector.getMySQLConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
 
-            stmt.setString(1, "%"+name+"%");
+            stmt.setString(1, "%" + name + "%");
             ResultSet result = stmt.executeQuery();
 
             Set<Club> clubs = new HashSet<>();
-            while (result.next()){
+            while (result.next()) {
                 Club club = new Club(result);
                 clubs.add(club);
             }
@@ -124,7 +124,7 @@ public class ClubManagerImpl implements ClubManager {
 
     }
 
-    public Set<Club> findByDate(String date){
+    public Set<Club> findByDate(String date) {
 
         String sql = "SELECT * FROM club WHERE creacion = ?";
 
@@ -136,7 +136,7 @@ public class ClubManagerImpl implements ClubManager {
             ResultSet result = stmt.executeQuery();
 
             Set<Club> clubs = new HashSet<>();
-            while (result.next()){
+            while (result.next()) {
                 clubs.add(new Club(result));
             }
 
@@ -150,7 +150,7 @@ public class ClubManagerImpl implements ClubManager {
 
     }
 
-    public Set<Club> findByEstadio(String estadio){
+    public Set<Club> findByEstadio(String estadio) {
 
         String sql = "SELECT * FROM club WHERE estadio LIKE ?";
 
@@ -162,7 +162,7 @@ public class ClubManagerImpl implements ClubManager {
             ResultSet result = stmt.executeQuery();
 
             Set<Club> clubs = new HashSet<>();
-            while (result.next()){
+            while (result.next()) {
                 clubs.add(new Club(result));
             }
 
@@ -176,7 +176,7 @@ public class ClubManagerImpl implements ClubManager {
 
     }
 
-    public Set<Club> findByOptions(Map<String, String> map){
+    public Set<Club> findByOptions(Map<String, String> map) {
         StringBuilder sql = new StringBuilder("SELECT * FROM club WHERE ");
 
         int contador = 0;
@@ -194,7 +194,7 @@ public class ClubManagerImpl implements ClubManager {
             if (value.length() > 0) {
                 if (key.equals("creacion")) {
                     sql.append(String.format(key + " = " + "'" + value + "'"));
-                } else if (key.equals("id")){
+                } else if (key.equals("id")) {
                     sql.append(String.format(key + " = " + Integer.parseInt(value)));
                 } else {
                     sql.append(String.format(key + " LIKE '%s'", "%" + value + "%"));
@@ -213,14 +213,14 @@ public class ClubManagerImpl implements ClubManager {
             ResultSet result = stmt.executeQuery(sql.toString());
             Set<Club> clubs = new HashSet<>();
 
-            while (result.next()){
+            while (result.next()) {
                 clubs.add(new Club(result));
             }
 
             con.close();
             return clubs;
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;
         }

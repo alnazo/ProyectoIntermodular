@@ -2,7 +2,6 @@ package com.proyectointermodular.controllers.futbolista;
 
 import com.proyectointermodular.App;
 import com.proyectointermodular.controllers.MenuPrincipal;
-import com.proyectointermodular.controllers.militacion.VerMilitacion;
 import com.proyectointermodular.dao.FutbolistaDAO;
 import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
@@ -202,7 +201,6 @@ public class VerFutbolista extends MenuPrincipal {
             String s_ape = ape.getText();
             String s_nac = nac.getText();
             String s_na = na.getText();
-            String s_nif = nif.getText();
 
             if (!s_nom.equals("") || s_nom.equals(f.getNombre())
                     && !s_ape.equals("") || s_ape.equals(f.getApellido())

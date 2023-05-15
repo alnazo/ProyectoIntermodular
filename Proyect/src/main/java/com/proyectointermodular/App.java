@@ -23,9 +23,11 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    public static Image getIcon(){
+
+    public static Image getIcon() {
         return new Image("com/proyectointermodular/app/icon.png");
     }
+
     public static void main(String[] args) {
         launch();
     }

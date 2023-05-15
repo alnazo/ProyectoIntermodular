@@ -2,7 +2,6 @@ package com.proyectointermodular.controllers.club;
 
 import com.proyectointermodular.App;
 import com.proyectointermodular.controllers.MenuPrincipal;
-import com.proyectointermodular.controllers.militacion.VerMilitacion;
 import com.proyectointermodular.dao.ClubDAO;
 import com.proyectointermodular.dto.Club;
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;

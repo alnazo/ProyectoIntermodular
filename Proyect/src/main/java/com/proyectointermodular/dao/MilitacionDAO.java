@@ -6,6 +6,7 @@ import com.proyectointermodular.persistence.connector.MySQLConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MilitacionDAO {
 
@@ -19,7 +20,7 @@ public class MilitacionDAO {
 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, mili.getTemporada());
-            stmt.setString(2, mili.getNif_Furbolista().getNif());
+            stmt.setString(2, mili.getNif_Futbolista().getNif());
             stmt.setInt(3, mili.getId_Club().getId());
 
             stmt.execute();
@@ -34,7 +35,18 @@ public class MilitacionDAO {
 
     }
 
-    public void delete() {
+    public void delete(Militacion militacion) {
+        try {
+            Connection con = connector.getMySQLConnection();
+            String sql = "DELETE FROM militacion WHERE (nif_futbolista = '" + militacion.getNif_Futbolista().getNif() + "' AND temporada = '" + militacion.getTemporada() + "' AND id_club = " + militacion.getId_Club().getId() + ")";
+
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+            con.close();
+
+        } catch (ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+        }
 
     }
 

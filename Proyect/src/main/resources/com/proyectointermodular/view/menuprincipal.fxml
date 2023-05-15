@@ -63,6 +63,7 @@
                 <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
                 <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
                 <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <Button fx:id="verJugadoras" mnemonicParsing="false" onAction="#verFutbolistas" prefHeight="75.0"
                     prefWidth="200.0" text="Lista de Futbolistas"/>
@@ -72,13 +73,15 @@
                     text="Añadir Futbolista" GridPane.rowIndex="2"/>
             <Button fx:id="addClub" mnemonicParsing="false" onAction="#addClub" prefHeight="75.0" prefWidth="200.0"
                     text="Añadir Club" GridPane.rowIndex="3"/>
+            <Button fx:id="addMilitacion" mnemonicParsing="false" onAction="#addMilitacion" prefHeight="75.0" prefWidth="200.0"
+            text="Añadir Militacion" GridPane.rowIndex="4"/>
             <Button fx:id="f3" disable="true" mnemonicParsing="false" opacity="0.0"
                     prefHeight="75.0" prefWidth="200.0" text="Clubs militados" onAction="#verMilitadosF"
-                    GridPane.rowIndex="4"/>
+                    GridPane.rowIndex="5"/>
             <Button fx:id="c3" disable="true" layoutX="10.0" layoutY="310.0" onAction="#verMilitadosC"
                     mnemonicParsing="false" opacity="0.0"
                     prefHeight="75.0" prefWidth="200.0"
-                    text="Futbolistas que militan" GridPane.rowIndex="4"/>
+                    text="Futbolistas que militan" GridPane.rowIndex="5"/>
         </GridPane>
     </right>
 </BorderPane>

@@ -32,19 +32,19 @@ public interface ClubManager extends Manager<Club> {
     Set<Club> findByName(String name);
 
     /**
+     * Busqueda de todos los objetos dependiendo de una fecha introducida.
      *
-     *
-     * @param date
-     * @return
+     * @param date Fecha en formato YYYY-MM-DD (yyyy-MM-dd)
+     * @return Un {@link Set} de {@link Club}
      */
     Set<Club> findByDate(String date);
 
 
     /**
+     * Busqueda de todos los objetos dependiendo del nombre del estadio.
      *
-     *
-     * @param estadio
-     * @return
+     * @param estadio Nombre del estadio de futbol.
+     * @return Un {@link Set} de {@link Club}
      */
     Set<Club> findByEstadio(String estadio);
 

@@ -41,9 +41,34 @@ public class MilitacionManagerImpl implements MilitacionManager {
     }
 
     @Override
+    public Militacion findByAllParams(String temp, String nif, Integer id){
+        Militacion mili = null;
+
+        try{
+            Connection con = connector.getMySQLConnection();
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT * FROM militacion WHERE nif_futbolista = '" + nif + "' AND temporada = '" + temp + "' AND id_club = " +id;
+
+            ResultSet result = stmt.executeQuery(sql);
+
+            while (result.next()){
+                mili = new Militacion(result);
+            }
+            con.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return mili;
+
+    }
+
+    @Override
     public Set<Militacion> findByTemporada(String temporada) {
 
-        String sql = String.format("SELECT * FROM futbolista WHERE nombre LIKE '%s'", "%" + temporada + "%");
+        String sql = String.format("SELECT * FROM militacion WHERE temporada LIKE '%s'", "%" + temporada + "%");
 
         try {
             Connection con = connector.getMySQLConnection();
@@ -52,7 +77,7 @@ public class MilitacionManagerImpl implements MilitacionManager {
             ResultSet result = stmt.executeQuery(sql);
             Set<Militacion> milit = new HashSet<>();
 
-            while (result.next()){
+            while (result.next()) {
                 milit.add(new Militacion(result));
             }
 
@@ -60,34 +85,57 @@ public class MilitacionManagerImpl implements MilitacionManager {
 
             return milit;
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
 
     @Override
-    public Set<Militacion> findByFutbolista(Futbolista futbolista){
+    public Set<Militacion> findByFutbolista(Futbolista futbolista) {
 
         String sql = String.format("SELECT * FROM militacion WHERE nif_futbolista = '%s'", futbolista.getNif());
 
-        try{
+        try {
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
 
             ResultSet result = stmt.executeQuery(sql);
             Set<Militacion> milit = new HashSet<>();
 
-            while(result.next()){
+            while (result.next()) {
                 milit.add(new Militacion(result));
             }
             con.close();
             return milit;
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;
         }
 
     }
+
+    @Override
+    public Set<Militacion> findByClub(Club club) {
+        String sql = String.format("SELECT * FROM militacion WHERE id_club = %s", club.getId());
+
+        try {
+            Connection con = connector.getMySQLConnection();
+            Statement stmt = con.createStatement();
+
+            ResultSet result = stmt.executeQuery(sql);
+            Set<Militacion> milit = new HashSet<>();
+
+            while (result.next()) {
+                milit.add(new Militacion(result));
+            }
+            con.close();
+            return milit;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }

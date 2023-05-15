@@ -36,19 +36,19 @@ public class AddClub extends MenuPrincipal {
             Club club = new Club(1, s_nombre, crea, s_estadio);
 
             Set<Club> list = new ClubManagerImpl().findByName(s_nombre);
-            if (list.size() > 0){
+            if (list.size() > 0) {
                 PopUp.display("El Club que esta introduciendo ya esxiste.");
             } else {
                 PopUp.add("club");
                 ClubDAO.create(club);
                 try {
-                    if(PopUp.resultado){
+                    if (PopUp.resultado) {
                         addClub();
                         PopUp.resultado = false;
                     } else {
                         verClubs();
                     }
-                } catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

@@ -10,7 +10,8 @@ import java.sql.SQLException;
 public class ClubDAO {
 
     private final static MySQLConnector connector = new MySQLConnector();
-    public static void create(Club club){
+
+    public static void create(Club club) {
         try {
             Connection con = connector.getMySQLConnection();
 
@@ -29,7 +30,7 @@ public class ClubDAO {
         }
     }
 
-    public void update(Club club){
+    public void update(Club club) {
         try {
             Connection con = connector.getMySQLConnection();
 
@@ -43,13 +44,13 @@ public class ClubDAO {
 
             stmt.execute();
             con.close();
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void delete(Integer id){
-        try{
+    public void delete(Integer id) {
+        try {
             Connection con = connector.getMySQLConnection();
 
             String sql = "DELETE FROM club WHERE (id = ?)";
@@ -60,7 +61,7 @@ public class ClubDAO {
             stmt.executeUpdate();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }

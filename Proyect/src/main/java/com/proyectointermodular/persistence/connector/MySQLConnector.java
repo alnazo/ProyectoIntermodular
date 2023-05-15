@@ -14,15 +14,15 @@ public class MySQLConnector {
     @Getter
     private Properties prop = new Properties();
 
-    public MySQLConnector(){
+    public MySQLConnector() {
         try {
             prop.load(getClass().getClassLoader().getResourceAsStream("com/proyectointermodular/config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public Connection getMySQLConnection() throws ClassNotFoundException, SQLException{
+
+    public Connection getMySQLConnection() throws ClassNotFoundException, SQLException {
 
         try {
             Class.forName(prop.getProperty(MySQLConstants.DRIVER));
@@ -34,6 +34,7 @@ public class MySQLConnector {
             throw e;
         }
     }
+
     private String getURL() {
         //jdbc:mysql://${url_host}:${port}/${schema}?user=${user}&password=${pass}&useSSL=false&...;
         return new StringBuilder()
@@ -50,7 +51,7 @@ public class MySQLConnector {
                 .append(prop.getProperty(MySQLConstants.SERVER_TIMEZONE)).toString();
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException{
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         MySQLConnector connector = new MySQLConnector();
         Connection connection = connector.getMySQLConnection();
         System.out.println(connection.getCatalog());

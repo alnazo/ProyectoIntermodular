@@ -1,12 +1,12 @@
 package com.proyectointermodular.dto;
 
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +17,7 @@ public class Club {
     private Date creacion;
     private String estadio;
 
-    public Club(ResultSet result){
+    public Club(ResultSet result) {
         try {
             this.id = result.getInt("id");
             this.nombre = result.getString("nombre");
@@ -26,10 +26,6 @@ public class Club {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public String getCreacionString(){
-        return this.creacion.toString();
     }
 
 }

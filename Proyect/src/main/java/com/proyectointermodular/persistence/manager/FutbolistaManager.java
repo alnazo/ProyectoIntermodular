@@ -1,11 +1,9 @@
 package com.proyectointermodular.persistence.manager;
 
-import java.sql.Connection;
+import com.proyectointermodular.dto.Futbolista;
+
 import java.util.Map;
 import java.util.Set;
-
-import com.proyectointermodular.dto.Futbolista;
-import com.proyectointermodular.persistence.connector.MySQLConnector;
 
 public interface FutbolistaManager extends Manager<Futbolista> {
 
@@ -15,7 +13,7 @@ public interface FutbolistaManager extends Manager<Futbolista> {
      * @param nif NIF de la jugadora para la busqueda.
      * @return Un {@link Set} de {@link Futbolista}.
      */
-    Set<Futbolista> findByNif( String nif);
+    Set<Futbolista> findByNif(String nif);
 
     /**
      * Busqueda de todos los objetos de Furbolistas en la BBDD de un Nombre.
@@ -42,7 +40,7 @@ public interface FutbolistaManager extends Manager<Futbolista> {
     Set<Futbolista> findByDate(String date);
 
     /**
-     *  Busqueda de jugadoras dependiendo del apellido
+     * Busqueda de jugadoras dependiendo del apellido
      *
      * @param surname Apellido de las jugadoras para su busqueda
      * @return Un {@link Set} de {@link Futbolista}

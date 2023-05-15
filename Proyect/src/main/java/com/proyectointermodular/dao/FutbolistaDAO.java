@@ -11,7 +11,7 @@ public class FutbolistaDAO {
 
     private final static MySQLConnector connector = new MySQLConnector();
 
-    public static void create(Futbolista futbolista){
+    public static void create(Futbolista futbolista) {
         try {
             Connection con = connector.getMySQLConnection();
 
@@ -27,12 +27,12 @@ public class FutbolistaDAO {
             stmt.execute();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void update(Futbolista futbolista){
+    public void update(Futbolista futbolista) {
         try {
             Connection con = connector.getMySQLConnection();
 
@@ -47,12 +47,13 @@ public class FutbolistaDAO {
 
             stmt.execute();
             con.close();
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
-    public void delete(String nif){
-        try{
+
+    public void delete(String nif) {
+        try {
             Connection con = connector.getMySQLConnection();
 
             String sql = "DELETE FROM futbolista WHERE (nif = ?)";
@@ -63,7 +64,7 @@ public class FutbolistaDAO {
             stmt.executeUpdate();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }

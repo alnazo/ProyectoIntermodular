@@ -11,7 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class PopUp{
+public class PopUp {
 
     public static boolean resultado;
     public static boolean delete;
@@ -34,6 +34,7 @@ public class PopUp{
 
         Scene scene1 = new Scene(layout, 600, 250);
         popupwindow.setScene(scene1);
+        popupwindow.getIcons().add(App.getIcon());
         popupwindow.showAndWait();
 
     }
@@ -45,7 +46,7 @@ public class PopUp{
         popupwindow.setTitle("Aviso!");
 
         String msg = "¿Quieres añadir otro club?";
-        if(tipo.equals("futbolista")){
+        if (tipo.equals("futbolista")) {
             msg = "¿Quieres añadir otra futbolista?";
         }
 
@@ -78,7 +79,7 @@ public class PopUp{
         popupwindow.showAndWait();
     }
 
-    public static void delete(){
+    public static void delete() {
         Stage popupwindow = new Stage();
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
