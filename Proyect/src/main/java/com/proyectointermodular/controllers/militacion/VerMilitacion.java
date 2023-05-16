@@ -1,5 +1,6 @@
 package com.proyectointermodular.controllers.militacion;
 
+import com.proyectointermodular.App;
 import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dao.FutbolistaDAO;
 import com.proyectointermodular.dao.MilitacionDAO;
@@ -13,12 +14,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.sql.Date;
 import java.util.Set;
@@ -189,8 +191,27 @@ public class VerMilitacion extends MenuPrincipal {
     }
 
     private void edit(Militacion mil, Futbolista fut){
-        System.out.println(mil);
-        System.out.println(fut);
+        Stage popupwindow = new Stage();
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Editar Militaciones de: (" + futboli.getNif() + ") " + futboli.getApellido() + ", " + futboli.getNombre());
+
+        Label Ltemp = new Label("Temporada");
+        TextField temp = new TextField();
+        TableView<Militacion> tab = new TableView<>(FXCollections.observableArrayList(new MilitacionManagerImpl().findByFutbolista(fut)));
+        TableColumn<Militacion, String> t_temp = new TableColumn<>("Temporada");
+        t_temp.setCellValueFactory(new PropertyValueFactory<Militacion, String>("temporada"));
+
+
+        Button send = new Button("Enviar");
+
+        VBox layout = new VBox(10);
+
+
+
+        Scene scene1 = new Scene(layout, 800, 250);
+        popupwindow.getIcons().add(App.getIcon());
+        popupwindow.setScene(scene1);
+        popupwindow.showAndWait();
     }
 
     private void edit(Militacion mil, Club clu){
