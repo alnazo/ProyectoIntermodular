@@ -31,9 +31,40 @@ public class MilitacionDAO {
         }
     }
 
-    public void update() {
+    public void updateF(Militacion militacion) {
+        try {
+            Connection con = connector.getMySQLConnection();
+            String sql = "UPDATE militacion SET temporada = ?, id_club = ? WHERE nif_futbolista = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
 
+            stmt.setString(1, militacion.getTemporada());
+            stmt.setInt(2, militacion.getId_Club().getId());
+            stmt.setString(3, militacion.getNif_Futbolista().getNif());
+
+            stmt.execute();
+            con.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void updateC(Militacion militacion) {
+        try {
+            Connection con = connector.getMySQLConnection();
+            String sql = "UPDATE militacion SET temporada = ?, nif_futbolista = ? WHERE id_club = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setString(1, militacion.getTemporada());
+            stmt.setString(2, militacion.getNif_Futbolista().getNif());
+            stmt.setInt(3, militacion.getId_Club().getId());
+
+            stmt.execute();
+            con.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void delete(Militacion militacion) {
         try {
@@ -44,10 +75,9 @@ public class MilitacionDAO {
             stmt.executeUpdate(sql);
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 }

@@ -80,7 +80,7 @@ public class AddMilitacion extends MenuPrincipal {
         clubs.setOnMouseClicked(event -> {
             clubEnlace = clubs.getSelectionModel().getSelectedItem();
         });
-        
+
     }
 
     @FXML
@@ -108,7 +108,7 @@ public class AddMilitacion extends MenuPrincipal {
     }
 
 
-    private boolean verificarFechas(String fecha) {
+    public static boolean verificarFechas(String fecha) {
         boolean res = false;
         if (fecha.contains("/")) {
             String[] par = fecha.split("/");

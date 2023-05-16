@@ -1,7 +1,7 @@
 package com.proyectointermodular.controllers;
 
 import com.proyectointermodular.App;
-import com.proyectointermodular.controllers.militacion.VerMilitacion;
+import com.proyectointermodular.popup.PopUp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -18,7 +18,7 @@ public class MenuPrincipal {
     @FXML
     public Button addClub;
     @FXML
-    public Button verJugadoras;
+    public Button verFutbolistas;
     @FXML
     public Button verClubs;
     @FXML
@@ -39,15 +39,16 @@ public class MenuPrincipal {
     }
 
     private void changeView(String file) throws IOException {
+        if (f3 != null && c3 != null) {
+            if (!c3.disableProperty().getValue()) {
+                c3.disableProperty().setValue(true);
+                c3.opacityProperty().setValue(0);
+            }
 
-        if (!c3.disableProperty().getValue()) {
-            c3.disableProperty().setValue(true);
-            c3.opacityProperty().setValue(0);
-        }
-
-        if (!f3.disableProperty().getValue()) {
-            f3.disableProperty().setValue(true);
-            f3.opacityProperty().setValue(0);
+            if (!f3.disableProperty().getValue()) {
+                f3.disableProperty().setValue(true);
+                f3.opacityProperty().setValue(0);
+            }
         }
 
         windowsGeneric.getChildren().clear();
@@ -56,6 +57,7 @@ public class MenuPrincipal {
         windowsGeneric.getChildren().add(newPanel);
     }
 
+    @FXML
     public void inicio() throws IOException {
         changeView("inicio");
     }
@@ -63,8 +65,10 @@ public class MenuPrincipal {
     @FXML
     public void verFutbolistas() throws IOException {
         changeView("futbolista/verFutbolista");
-        f3.disableProperty().setValue(false);
-        f3.opacityProperty().setValue(1);
+        if(f3 != null) {
+            f3.disableProperty().setValue(false);
+            f3.opacityProperty().setValue(1);
+        }
     }
 
     @FXML
@@ -97,8 +101,13 @@ public class MenuPrincipal {
     }
 
     @FXML
-    public void addMilitacion() throws IOException{
+    public void addMilitacion() throws IOException {
         changeView("militacion/addMilitacion");
+    }
+
+    @FXML
+    private void about(){
+        PopUp.about();
     }
 
 }

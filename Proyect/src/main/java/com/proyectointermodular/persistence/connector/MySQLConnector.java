@@ -16,7 +16,8 @@ public class MySQLConnector {
 
     public MySQLConnector() {
         try {
-            prop.load(getClass().getClassLoader().getResourceAsStream("com/proyectointermodular/config.properties"));
+            //prop.load(getClass().getClassLoader().getResourceAsStream("com/proyectointermodular/config.properties"));
+            prop.load(getClass().getClassLoader().getResourceAsStream("com/proyectointermodular/config_local.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }

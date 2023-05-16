@@ -6,6 +6,7 @@ import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
 import com.proyectointermodular.popup.PopUp;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -49,15 +50,13 @@ public class AddFutbolista extends MenuPrincipal {
                 } else {
                     PopUp.add("futbolista");
                     FutbolistaDAO.create(futbolista);
-                    try {
-                        if (PopUp.resultado) {
-                            addPlayer();
-                            PopUp.resultado = false;
-                        } else {
-                            verFutbolistas();
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (PopUp.resultado) {
+                        Button b = (Button) windowsGeneric.getParent().getParent().lookup("#addPlayer");
+                        b.fire();
+                        PopUp.resultado = false;
+                    } else {
+                        Button b = (Button) windowsGeneric.getParent().getParent().lookup("#verFutbolistas");
+                        b.fire();
                     }
                 }
             }

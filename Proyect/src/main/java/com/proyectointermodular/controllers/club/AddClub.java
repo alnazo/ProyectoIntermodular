@@ -6,6 +6,7 @@ import com.proyectointermodular.dto.Club;
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
 import com.proyectointermodular.popup.PopUp;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -20,6 +21,13 @@ public class AddClub extends MenuPrincipal {
     private TextField creacion;
     @FXML
     private TextField estadio;
+
+    @FXML
+    private void initialize(){
+        nombre.setText("");
+        creacion.setText("");
+        estadio.setText("");
+    }
 
     @FXML
     private void enviar() {
@@ -41,15 +49,13 @@ public class AddClub extends MenuPrincipal {
             } else {
                 PopUp.add("club");
                 ClubDAO.create(club);
-                try {
-                    if (PopUp.resultado) {
-                        addClub();
-                        PopUp.resultado = false;
-                    } else {
-                        verClubs();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (PopUp.resultado) {
+                    Button b = (Button) windowsGeneric.getParent().getParent().lookup("#addClub");
+                    b.fire();
+                    PopUp.resultado = false;
+                } else {
+                    Button b = (Button) windowsGeneric.getParent().getParent().lookup("#verClubs");
+                    b.fire();
                 }
             }
 

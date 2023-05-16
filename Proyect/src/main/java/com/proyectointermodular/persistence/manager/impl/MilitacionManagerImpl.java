@@ -41,18 +41,18 @@ public class MilitacionManagerImpl implements MilitacionManager {
     }
 
     @Override
-    public Militacion findByAllParams(String temp, String nif, Integer id){
+    public Militacion findByAllParams(String temp, String nif, Integer id) {
         Militacion mili = null;
 
-        try{
+        try {
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT * FROM militacion WHERE nif_futbolista = '" + nif + "' AND temporada = '" + temp + "' AND id_club = " +id;
+            String sql = "SELECT * FROM militacion WHERE nif_futbolista = '" + nif + "' AND temporada = '" + temp + "' AND id_club = " + id;
 
             ResultSet result = stmt.executeQuery(sql);
 
-            while (result.next()){
+            while (result.next()) {
                 mili = new Militacion(result);
             }
             con.close();

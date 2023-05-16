@@ -81,7 +81,6 @@ public class VerFutbolista extends MenuPrincipal {
             Futbolista selectFutbolista = tabla.getSelectionModel().getSelectedItem();
             windowsGeneric.getParent().getParent().lookup("#f3").setUserData(selectFutbolista);
         });
-
     }
 
     @FXML

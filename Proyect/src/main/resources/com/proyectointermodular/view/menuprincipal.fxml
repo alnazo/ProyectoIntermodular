@@ -30,7 +30,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#addClub" text="Añadir Club"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
-                <MenuItem mnemonicParsing="false" text="About"/>
+                <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
             </Menu>
         </MenuBar>
     </top>
@@ -65,7 +65,7 @@
                 <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
                 <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <Button fx:id="verJugadoras" mnemonicParsing="false" onAction="#verFutbolistas" prefHeight="75.0"
+            <Button fx:id="verFutbolistas" mnemonicParsing="false" onAction="#verFutbolistas" prefHeight="75.0"
                     prefWidth="200.0" text="Lista de Futbolistas"/>
             <Button fx:id="verClubs" mnemonicParsing="false" onAction="#verClubs" prefHeight="75.0" prefWidth="200.0"
                     text="Lista de Clubs" GridPane.rowIndex="1"/>
