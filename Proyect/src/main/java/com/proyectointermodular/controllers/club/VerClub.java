@@ -4,7 +4,6 @@ import com.proyectointermodular.App;
 import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dao.ClubDAO;
 import com.proyectointermodular.dto.Club;
-import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.dto.Militacion;
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
 import com.proyectointermodular.persistence.manager.impl.MilitacionManagerImpl;

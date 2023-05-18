@@ -1,6 +1,9 @@
 package com.proyectointermodular.controllers;
 
 import com.proyectointermodular.App;
+import com.proyectointermodular.persistence.connector.MySQLConnector;
+import com.proyectointermodular.persistence.manageDDBB.ChangeData;
+import com.proyectointermodular.persistence.manageDDBB.ImportScheme;
 import com.proyectointermodular.popup.PopUp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +12,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MenuPrincipal {
     @FXML
@@ -157,6 +161,22 @@ public class MenuPrincipal {
     @FXML
     private void about() {
         PopUp.about();
+    }
+
+    /**
+     * Metodo de Importacion a Base de Datos del esquema de la base de datos limpia.
+     */
+    @FXML
+    private void loadDB() {
+        ImportScheme.inport();
+    }
+
+    /**
+     * Herramienta de cambio de conexión de la Base de Datos.
+     */
+    @FXML
+    private void changeDB() {
+        new ChangeData().inicio();
     }
 
 }

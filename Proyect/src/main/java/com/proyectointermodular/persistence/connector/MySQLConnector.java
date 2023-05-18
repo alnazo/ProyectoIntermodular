@@ -1,5 +1,6 @@
 package com.proyectointermodular.persistence.connector;
 
+import com.proyectointermodular.App;
 import lombok.Getter;
 
 import java.io.IOException;
@@ -14,15 +15,24 @@ public class MySQLConnector {
     @Getter
     private Properties prop = new Properties();
 
+    /**
+     * Constructor que carga en {@link Properties} el archivo de parametros de la Base de Datos.
+     */
     public MySQLConnector() {
         try {
-            //prop.load(getClass().getClassLoader().getResourceAsStream("com/proyectointermodular/config.properties"));
-            prop.load(getClass().getClassLoader().getResourceAsStream("com/proyectointermodular/config_local.properties"));
+            prop.load(App.class.getResource("ddbb/config.properties").openStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Creacion de conexion de la Base de Datos.
+     *
+     * @return {@link Connection}.
+     * @throws ClassNotFoundException Excepción por falta de {@link Class}.
+     * @throws SQLException           Excepción por algún tramite en la hora de conectar a la Base de Datos.
+     */
     public Connection getMySQLConnection() throws ClassNotFoundException, SQLException {
 
         try {
@@ -36,6 +46,11 @@ public class MySQLConnector {
         }
     }
 
+    /**
+     * Metodo para formar la URL.
+     *
+     * @return {@link String}.
+     */
     private String getURL() {
         //jdbc:mysql://${url_host}:${port}/${schema}?user=${user}&password=${pass}&useSSL=false&...;
         return new StringBuilder()
@@ -52,10 +67,24 @@ public class MySQLConnector {
                 .append(prop.getProperty(MySQLConstants.SERVER_TIMEZONE)).toString();
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
+    /**
+     * Comprobador mediante la obtención del nombre de la DDBB a la que se conecta para su verificación.
+     *
+     * @return {@link Boolean}.
+     */
+    public static boolean testConnect() throws SQLException, ClassNotFoundException {
         MySQLConnector connector = new MySQLConnector();
         Connection connection = connector.getMySQLConnection();
-        System.out.println(connection.getCatalog());
+        boolean respuesta = true;
+
+        String cat = connection.getCatalog();
+        if (cat == null) {
+            respuesta = false;
+        }
+
         connection.close();
+        return respuesta;
     }
+
 }

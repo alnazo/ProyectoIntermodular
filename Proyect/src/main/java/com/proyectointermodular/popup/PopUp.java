@@ -264,5 +264,43 @@ public class PopUp {
         popupwindow.showAndWait();
     }
 
+    /**
+     * PopUp verificador borrado e insercion de bases de datos
+     */
+    public static void verificador() {
+        Stage popupwindow = new Stage();
+
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Aviso!");
+
+        Label label1 = new Label("¿Está seguro de que quiere importar las tablas?");
+        Label label2 = new Label("(Esto podria borrar los datos actuales)");
+
+        Button button1 = new Button("Si");
+        Button button2 = new Button("No");
+
+        button1.setOnAction(e -> {
+            resultado = true;
+            popupwindow.close();
+        });
+        button2.setOnAction(e -> {
+            resultado = false;
+            popupwindow.close();
+        });
+
+        VBox layout = new VBox(10);
+        HBox layout2 = new HBox(10);
+
+        layout.getChildren().addAll(label1, label2, layout2);
+        layout2.getChildren().addAll(button1, button2);
+
+        layout.setAlignment(Pos.CENTER);
+        layout2.setAlignment(Pos.CENTER);
+
+        Scene scene1 = new Scene(layout, 600, 250);
+        popupwindow.setScene(scene1);
+        popupwindow.getIcons().add(App.getIcon());
+        popupwindow.showAndWait();
+    }
 
 }

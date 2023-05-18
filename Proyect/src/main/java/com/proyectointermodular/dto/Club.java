@@ -17,6 +17,11 @@ public class Club {
     private Date creacion;
     private String estadio;
 
+    /**
+     * Constructor de {@link Club} recibiendo resultados de la Base de Datos.
+     *
+     * @param result {@link Object} de tipo {@link ResultSet} que contiene la información de la Base de Datos.
+     */
     public Club(ResultSet result) {
         try {
             this.id = result.getInt("id");

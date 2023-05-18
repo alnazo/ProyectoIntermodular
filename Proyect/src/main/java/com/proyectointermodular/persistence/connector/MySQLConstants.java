@@ -1,5 +1,8 @@
 package com.proyectointermodular.persistence.connector;
 
+/**
+ * Constantes que se obtienen desde el .properties hacia variables utilizadas en {@link MySQLConnector}
+ */
 public class MySQLConstants {
     public static final String PASSWD = "jdbc.mysql.passwd";
     public static final String USER = "jdbc.mysql.user";

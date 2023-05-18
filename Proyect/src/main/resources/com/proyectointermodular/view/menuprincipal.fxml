@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 <BorderPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectointermodular.controllers.MenuPrincipal">
     <top>
         <MenuBar depthTest="DISABLE" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="Archivo">
-                <MenuItem id="closeMenu" fx:id="closeMenu" mnemonicParsing="false" onAction="#closeMenu"
+                <MenuItem accelerator="Alt + F4" id="closeMenu" fx:id="closeMenu" mnemonicParsing="false"
+                          onAction="#closeMenu"
                           text="Cerrar aplicación"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Enlaces">
-                <MenuItem mnemonicParsing="false" onAction="#inicio" text="Menú Principal"/>
+                <MenuItem accelerator="Ctrl + 1" mnemonicParsing="false" onAction="#inicio" text="Menú Principal"/>
                 <SeparatorMenuItem mnemonicParsing="false"/>
-                <MenuItem mnemonicParsing="false" onAction="#verFutbolistas" text="Lista de Futbolista"/>
-                <MenuItem mnemonicParsing="false" onAction="#verClubs" text="Lista de Clubs"/>
+                <MenuItem accelerator="Ctrl + 2" mnemonicParsing="false" onAction="#verFutbolistas"
+                          text="Lista de Futbolista"/>
+                <MenuItem accelerator="Ctrl + 3" mnemonicParsing="false" onAction="#verClubs" text="Lista de Clubs"/>
                 <SeparatorMenuItem mnemonicParsing="false"/>
-                <MenuItem mnemonicParsing="false" onAction="#addPlayer" text="Añadir Futbolista"/>
-                <MenuItem mnemonicParsing="false" onAction="#addClub" text="Añadir Club"/>
+                <MenuItem accelerator="Ctrl + 4" mnemonicParsing="false" onAction="#addPlayer"
+                          text="Añadir Futbolista"/>
+                <MenuItem accelerator="Ctrl + 5" mnemonicParsing="false" onAction="#addClub" text="Añadir Club"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
-                <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
+                <MenuItem accelerator="F1" mnemonicParsing="false" onAction="#about" text="About"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <MenuItem accelerator="F2" mnemonicParsing="false" onAction="#changeDB" text="Cambiar conexion BD"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <MenuItem accelerator="F3" mnemonicParsing="false" onAction="#loadDB" text="Cargar Esquema BD"/>
             </Menu>
         </MenuBar>
     </top>
@@ -51,8 +51,7 @@
         </GridPane>
     </center>
     <right>
-        <GridPane minHeight="575.0" minWidth="150.0" prefHeight="300.0" prefWidth="150.0"
-                  BorderPane.alignment="CENTER">
+        <GridPane minHeight="575.0" minWidth="150.0" prefHeight="300.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0"
                                    prefWidth="150.0"/>
@@ -73,14 +72,12 @@
                     text="Añadir Futbolista" GridPane.rowIndex="2"/>
             <Button fx:id="addClub" mnemonicParsing="false" onAction="#addClub" prefHeight="75.0" prefWidth="200.0"
                     text="Añadir Club" GridPane.rowIndex="3"/>
-            <Button fx:id="addMilitacion" mnemonicParsing="false" onAction="#addMilitacion" prefHeight="75.0" prefWidth="200.0"
-            text="Añadir Militacion" GridPane.rowIndex="4"/>
-            <Button fx:id="f3" disable="true" mnemonicParsing="false" opacity="0.0"
-                    prefHeight="75.0" prefWidth="200.0" text="Clubs militados" onAction="#verMilitadosF"
-                    GridPane.rowIndex="5"/>
-            <Button fx:id="c3" disable="true" layoutX="10.0" layoutY="310.0" onAction="#verMilitadosC"
-                    mnemonicParsing="false" opacity="0.0"
-                    prefHeight="75.0" prefWidth="200.0"
+            <Button fx:id="addMilitacion" mnemonicParsing="false" onAction="#addMilitacion" prefHeight="75.0"
+                    prefWidth="200.0" text="Añadir Militacion" GridPane.rowIndex="4"/>
+            <Button fx:id="f3" disable="true" mnemonicParsing="false" onAction="#verMilitadosF" opacity="0.0"
+                    prefHeight="75.0" prefWidth="200.0" text="Clubs militados" GridPane.rowIndex="5"/>
+            <Button fx:id="c3" disable="true" layoutX="10.0" layoutY="310.0" mnemonicParsing="false"
+                    onAction="#verMilitadosC" opacity="0.0" prefHeight="75.0" prefWidth="200.0"
                     text="Futbolistas que militan" GridPane.rowIndex="5"/>
         </GridPane>
     </right>

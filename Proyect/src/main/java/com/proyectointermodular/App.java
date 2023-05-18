@@ -10,6 +10,14 @@ import java.io.IOException;
 
 public class App extends Application {
 
+    /**
+     *
+     * @param stage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         Scene scene = new Scene(FXMLLoader.load(App.class.getResource("view/menuprincipal.fxml")), 800, 600);
@@ -24,6 +32,11 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Icono de la aplicación.
+     *
+     * @return {@link Image}
+     */
     public static Image getIcon() {
         return new Image("com/proyectointermodular/app/icon.png");
     }

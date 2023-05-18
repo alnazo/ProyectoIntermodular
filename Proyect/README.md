@@ -6,7 +6,7 @@
 - [x] Al eliminar Futbolista o Club, teniendo una Militacion, las claves foraneas dan error al eliminar
 - [x] Revisar todas las acciones del programa
 - [x] Documentar JavaDocs
-- [ ] \(Opcional) Cambio de BBDD desde PopUp
-- [ ] \(Opcional) Insercion Schema Data Base
+- [x] \(Opcional) Insercion Schema Data Base
+- [x] \(Opcional) Cambio de BBDD desde PopUp
 
-*Estimacion aproximada hasta fecha de completar acciones (sin opcional) --> 18/05/2023*
+*✔ - Estimacion aproximada hasta fecha de completar acciones (sin opcional) --> 18/05/2023*

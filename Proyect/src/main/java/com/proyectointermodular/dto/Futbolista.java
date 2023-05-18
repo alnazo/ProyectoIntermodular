@@ -18,7 +18,11 @@ public class Futbolista {
     private String nacionalidad;
     private String nif;
 
-
+    /**
+     * Constructor de {@link Futbolista} recibiendo resultados de la Base de Datos.
+     *
+     * @param result {@link Object} de tipo {@link ResultSet} que contiene la información de la Base de Datos.
+     */
     public Futbolista(ResultSet result) {
         try {
             this.nombre = result.getString("nombre");

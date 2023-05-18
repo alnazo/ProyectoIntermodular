@@ -19,6 +19,11 @@ public class Militacion {
     private Futbolista nif_Futbolista;
     private Club id_Club;
 
+    /**
+     * Constructor de {@link Militacion} recibiendo resultados de la Base de Datos.
+     *
+     * @param result {@link Object} de tipo {@link ResultSet} que contiene la información de la Base de Datos.
+     */
     public Militacion(ResultSet result) {
         try {
             Set<Futbolista> li = new FutbolistaManagerImpl().findByNif(result.getString("nif_futbolista"));
