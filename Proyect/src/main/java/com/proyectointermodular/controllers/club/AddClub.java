@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.util.Set;
 
@@ -22,13 +21,19 @@ public class AddClub extends MenuPrincipal {
     @FXML
     private TextField estadio;
 
+    /**
+     * Inicializacion de la visualización.
+     */
     @FXML
-    private void initialize(){
+    private void initialize() {
         nombre.setText("");
         creacion.setText("");
         estadio.setText("");
     }
 
+    /**
+     * Envio de informacion para crear un {@link Club}
+     */
     @FXML
     private void enviar() {
         String s_nombre = this.nombre.getText();

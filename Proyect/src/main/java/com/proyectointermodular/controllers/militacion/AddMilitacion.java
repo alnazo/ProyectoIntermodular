@@ -52,6 +52,9 @@ public class AddMilitacion extends MenuPrincipal {
     private Futbolista futbolistaEnlace = null;
     private Club clubEnlace = null;
 
+    /**
+     * Inicializacion de la visualización.
+     */
     @FXML
     private void initialize() {
         nombreF.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("nombre"));
@@ -83,6 +86,9 @@ public class AddMilitacion extends MenuPrincipal {
 
     }
 
+    /**
+     * Envio de informacion para crear una {@link Militacion}.
+     */
     @FXML
     private void send() {
         String s_fechas = fechas.getText();
@@ -108,6 +114,12 @@ public class AddMilitacion extends MenuPrincipal {
     }
 
 
+    /**
+     * Verificador de Temporadas de {@link Militacion}.
+     *
+     * @param fecha La {@link String} con las temporadas para su verificación.
+     * @return {@link Boolean}.
+     */
     public static boolean verificarFechas(String fecha) {
         boolean res = false;
         if (fecha.contains("/")) {

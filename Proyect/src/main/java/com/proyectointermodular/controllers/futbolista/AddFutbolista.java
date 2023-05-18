@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.util.Set;
 
@@ -27,6 +26,9 @@ public class AddFutbolista extends MenuPrincipal {
     @FXML
     private TextField nif;
 
+    /**
+     * Envio de informacion para crear una {@link Futbolista}.
+     */
     @FXML
     private void enviar() {
         String s_nif = this.nif.getText();
@@ -66,6 +68,12 @@ public class AddFutbolista extends MenuPrincipal {
 
     }
 
+    /**
+     * Verificador de NIF para {@link Futbolista}
+     *
+     * @param dni El {@link String} del DNI/NIF para su verificación.
+     * @return {@link Boolean}.
+     */
     private boolean comporbar_nif(String dni) {
         final String dniChars = "TRWAGMYFPDXBNJZSQVHLCKE";
         String numdni = dni.trim().substring(0, 8);

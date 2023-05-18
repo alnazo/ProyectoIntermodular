@@ -4,7 +4,9 @@ import com.proyectointermodular.App;
 import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dao.FutbolistaDAO;
 import com.proyectointermodular.dto.Futbolista;
+import com.proyectointermodular.dto.Militacion;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
+import com.proyectointermodular.persistence.manager.impl.MilitacionManagerImpl;
 import com.proyectointermodular.popup.PopUp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,6 +55,9 @@ public class VerFutbolista extends MenuPrincipal {
     MenuItem o1 = new MenuItem("Editar");
     MenuItem o2 = new MenuItem("Eliminar");
 
+    /**
+     * Inicializacion de la visualización.
+     */
     @FXML
     public void initialize() {
         t_nombre.setCellValueFactory(new PropertyValueFactory<Futbolista, String>("nombre"));
@@ -83,6 +88,9 @@ public class VerFutbolista extends MenuPrincipal {
         });
     }
 
+    /**
+     * Metodo para inicializar la busqueda de datos dependiendo de la entrada de datos.
+     */
     @FXML
     private void search() {
         String s_nif = this.nif.getText();
@@ -147,6 +155,11 @@ public class VerFutbolista extends MenuPrincipal {
         }
     }
 
+    /**
+     * PopUp para editar la {@link Futbolista} seleccionada en la tabla.
+     *
+     * @param f {@link Futbolista} Datos perteneciente en la {@link javafx.scene.layout.RowConstraints}
+     */
     public void edit(Futbolista f) {
         Stage popupwindow = new Stage();
         popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -225,12 +238,22 @@ public class VerFutbolista extends MenuPrincipal {
         initialize();
     }
 
+    /**
+     * Metodo de eliminacion, con comprobacion de {@link Militacion}
+     *
+     * @param f {@link Futbolista} Datos para su eliminacion
+     */
     public void eliminar(Futbolista f) {
-        PopUp.delete();
-        if (PopUp.delete) {
-            new FutbolistaDAO().delete(f.getNif());
-            initialize();
-            PopUp.delete = false;
+        Set<Militacion> list = new MilitacionManagerImpl().findByFutbolista(f);
+        if (list.size() > 0) {
+            PopUp.display("Esta Futbolista, tiene un registros de militacion y no es posible eliminar");
+        } else {
+            PopUp.delete();
+            if (PopUp.delete) {
+                new FutbolistaDAO().delete(f.getNif());
+                initialize();
+                PopUp.delete = false;
+            }
         }
     }
 

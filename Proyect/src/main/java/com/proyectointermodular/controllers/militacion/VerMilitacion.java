@@ -56,11 +56,17 @@ public class VerMilitacion extends MenuPrincipal {
     private TableColumn<Militacion, Date> creacionC;
     @FXML
     private TableColumn<Militacion, String> estadioC;
+    /**
+     * Parametros adicionales
+     */
     private Futbolista futboli;
     private Club club;
     MenuItem o1 = new MenuItem("Editar");
     MenuItem o2 = new MenuItem("Eliminar");
 
+    /**
+     * Inicializacion de la visualización.
+     */
     @FXML
     public void initialize() {
         temp.setCellValueFactory(new PropertyValueFactory<Militacion, String>("temporada"));
@@ -121,6 +127,9 @@ public class VerMilitacion extends MenuPrincipal {
 
     }
 
+    /**
+     * Carga de lista de {@link Club} desde {@link Futbolista}.
+     */
     @FXML
     public void futbolistaMilita() {
         if (windowsGeneric.getParent().getParent().lookup("#f3").getUserData() != null) {
@@ -155,6 +164,9 @@ public class VerMilitacion extends MenuPrincipal {
 
     }
 
+    /**
+     * Carga de lista de {@link Futbolista} desde {@link Club}.
+     */
     @FXML
     public void clubsMilita() {
         if (windowsGeneric.getParent().getParent().lookup("#c3").getUserData() != null) {
@@ -186,6 +198,12 @@ public class VerMilitacion extends MenuPrincipal {
         estadioC.visibleProperty().setValue(false);
     }
 
+    /**
+     * PopUp de edicion de una Militacion dependiendo de la Futbolista.
+     *
+     * @param mil {@link Militacion} actual para su edicion.
+     * @param fut {@link Futbolista} seleccionado.
+     */
     private void edit(Militacion mil, Futbolista fut) {
         Stage popupwindow = new Stage();
         popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -240,6 +258,12 @@ public class VerMilitacion extends MenuPrincipal {
         popupwindow.showAndWait();
     }
 
+    /**
+     * PopUp de edicion de una Militacion dependiendo del Club.
+     *
+     * @param mil {@link Militacion} actual para su edicion.
+     * @param clu {@link Club} seleccionado.
+     */
     private void edit(Militacion mil, Club clu) {
         Stage popupwindow = new Stage();
         popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -298,6 +322,12 @@ public class VerMilitacion extends MenuPrincipal {
         popupwindow.showAndWait();
     }
 
+    /**
+     * Eliminacion de una militacion dependiendo de la Futbolista.
+     *
+     * @param mil {@link Militacion} actual para su eliminacion.
+     * @param fut {@link Futbolista} seleccionado.
+     */
     private void eliminar(Militacion mil, Futbolista fut) {
         PopUp.delete();
         if (PopUp.delete) {
@@ -308,6 +338,12 @@ public class VerMilitacion extends MenuPrincipal {
         }
     }
 
+    /**
+     * Eliminacion de una militacion dependiendo del Club.
+     *
+     * @param mil {@link Militacion} actual para su eliminacion.
+     * @param clu {@link Club} seleccionado.
+     */
     private void eliminar(Militacion mil, Club clu) {
         PopUp.delete();
         if (PopUp.delete) {

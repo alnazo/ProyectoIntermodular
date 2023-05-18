@@ -12,6 +12,11 @@ public class MilitacionDAO {
 
     private final static MySQLConnector connector = new MySQLConnector();
 
+    /**
+     * Creacion de una entrada en la Base de Datos.
+     *
+     * @param mili {@link Militacion}.
+     */
     public static void create(Militacion mili) {
         try {
             Connection con = connector.getMySQLConnection();
@@ -31,6 +36,11 @@ public class MilitacionDAO {
         }
     }
 
+    /**
+     * Actualizacion de una entrada concreta en la Base de Datos desde el punto de Futbolista.
+     *
+     * @param militacion {@link Militacion}.
+     */
     public void updateF(Militacion militacion) {
         try {
             Connection con = connector.getMySQLConnection();
@@ -48,6 +58,11 @@ public class MilitacionDAO {
         }
     }
 
+    /**
+     * Actualizacion de una entrada concreta en la Base de Datos desde el punto de Clubs.
+     *
+     * @param militacion {@link Militacion}.
+     */
     public void updateC(Militacion militacion) {
         try {
             Connection con = connector.getMySQLConnection();
@@ -65,7 +80,11 @@ public class MilitacionDAO {
         }
     }
 
-
+    /**
+     * Eliminacion de una entrada concreta en la Base de Datos.
+     *
+     * @param militacion {@link Militacion}.
+     */
     public void delete(Militacion militacion) {
         try {
             Connection con = connector.getMySQLConnection();

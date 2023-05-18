@@ -27,15 +27,15 @@ public interface ClubManager extends Manager<Club> {
      * Busqueda de todos los objetos de Club en la BBDD de un Nombre.
      *
      * @param name Nombre del equipo para la busqueda.
-     * @return Un {@link Set} de {@link Club}
+     * @return Un {@link Set} de {@link Club}.
      */
     Set<Club> findByName(String name);
 
     /**
      * Busqueda de todos los objetos dependiendo de una fecha introducida.
      *
-     * @param date Fecha en formato YYYY-MM-DD (yyyy-MM-dd)
-     * @return Un {@link Set} de {@link Club}
+     * @param date Fecha en formato YYYY-MM-DD (yyyy-MM-dd).
+     * @return Un {@link Set} de {@link Club}.
      */
     Set<Club> findByDate(String date);
 
@@ -44,7 +44,7 @@ public interface ClubManager extends Manager<Club> {
      * Busqueda de todos los objetos dependiendo del nombre del estadio.
      *
      * @param estadio Nombre del estadio de futbol.
-     * @return Un {@link Set} de {@link Club}
+     * @return Un {@link Set} de {@link Club}.
      */
     Set<Club> findByEstadio(String estadio);
 

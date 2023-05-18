@@ -28,16 +28,20 @@ public class MenuPrincipal {
     @FXML
     public MenuItem closeMenu;
 
-    @FXML
-    private void initialize() {
-
-    }
-
+    /**
+     * Metodo para el cierre de la aplicación.
+     */
     @FXML
     private void closeMenu() {
         System.exit(0);
     }
 
+    /**
+     * Metodo para el cambio de visualizacion dentro del cuadro general de la aplicación.
+     *
+     * @param file Sub-ruta del fichero dentro de la carpeta organizadora de las visualizaciones.
+     * @throws IOException Excepción en caso de que el {@param file} no exista el acceso.
+     */
     private void changeView(String file) throws IOException {
         if (f3 != null && c3 != null) {
             if (!c3.disableProperty().getValue()) {
@@ -57,20 +61,35 @@ public class MenuPrincipal {
         windowsGeneric.getChildren().add(newPanel);
     }
 
+    /**
+     * Cambio de visualizacion a Inicio.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void inicio() throws IOException {
         changeView("inicio");
     }
 
+    /**
+     * Cambio de visualizacion a Lista de Futbolistas.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void verFutbolistas() throws IOException {
         changeView("futbolista/verFutbolista");
-        if(f3 != null) {
+        if (f3 != null) {
             f3.disableProperty().setValue(false);
             f3.opacityProperty().setValue(1);
         }
     }
 
+    /**
+     * Cambio de visualizacion a Lista de Clubs.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void verClubs() throws IOException {
         changeView("club/verClubs");
@@ -78,35 +97,65 @@ public class MenuPrincipal {
         c3.opacityProperty().setValue(1);
     }
 
+    /**
+     * Cambio de visualizacion a Adicion de nueva Futbolista.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void addPlayer() throws IOException {
         changeView("futbolista/addFutbolista");
     }
 
+    /**
+     * Cambio de visualizacion a Adicion de nuevo Club.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void addClub() throws IOException {
         changeView("club/addClub");
     }
 
+    /**
+     * Cambio de visualizacion a Lista de Militacion desde Futbolista.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void verMilitadosF() throws IOException {
         changeView("militacion/verMilitacion");
         windowsGeneric.lookup("#cdc").disableProperty().setValue(true);
     }
 
+    /**
+     * Cambio de visualizacion a Lista de Militacion desde Club.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void verMilitadosC() throws IOException {
         changeView("militacion/verMilitacion");
         windowsGeneric.lookup("#cdf").disableProperty().setValue(true);
     }
 
+    /**
+     * Cambio de visualizacion a Adicion de Militacion.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
     public void addMilitacion() throws IOException {
         changeView("militacion/addMilitacion");
     }
 
+    /**
+     * Apertura del PopUp About.
+     *
+     * @throws IOException Excepción en caso de que no exista el acceso.
+     */
     @FXML
-    private void about(){
+    private void about() {
         PopUp.about();
     }
 

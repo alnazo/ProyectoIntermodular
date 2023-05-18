@@ -20,12 +20,15 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-
 public class PopUp {
-
     public static boolean resultado;
     public static boolean delete;
 
+    /**
+     * PopUp generico que muestra un mensaje definido.
+     *
+     * @param msg Mensaje que se mostrara en el PopUp
+     */
     public static void display(String msg) {
         Stage popupwindow = new Stage();
 
@@ -49,6 +52,12 @@ public class PopUp {
 
     }
 
+    /**
+     * PopUp para afirmacion o negacion ante la introduccion de una nueva Futbolista o un nuevo Club
+     * sino, regresara a la lista global dependiendo del tipo
+     *
+     * @param tipo Texto que informa si proviene desde Futbolista o Club
+     */
     public static void add(String tipo) {
         Stage popupwindow = new Stage();
 
@@ -89,6 +98,9 @@ public class PopUp {
         popupwindow.showAndWait();
     }
 
+    /**
+     * PopUp de confirmación de eliminación.
+     */
     public static void delete() {
         Stage popupwindow = new Stage();
 
@@ -126,6 +138,9 @@ public class PopUp {
         popupwindow.showAndWait();
     }
 
+    /**
+     * Ventana About de informacion sobre el programa.
+     */
     public static void about() {
         Stage popupwindow = new Stage();
 

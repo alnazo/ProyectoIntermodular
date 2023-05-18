@@ -24,34 +24,34 @@ public interface FutbolistaManager extends Manager<Futbolista> {
     Set<Futbolista> findByName(String name);
 
     /**
-     * Busqueda de jugadoras dependiendo de su nacionalidad
+     * Busqueda de jugadoras dependiendo de su nacionalidad.
      *
-     * @param nacionalidad Nacionalidad de las jugadoras para su busqueda
-     * @return Un {@link Set} de {@link Futbolista}
+     * @param nacionalidad Nacionalidad de las jugadoras para su busqueda.
+     * @return Un {@link Set} de {@link Futbolista}.
      */
     Set<Futbolista> findByNacionalidad(String nacionalidad);
 
     /**
-     * Busqueda de jugadoras dependiendo su fecha de nacimiento
+     * Busqueda de jugadoras dependiendo su fecha de nacimiento.
      *
-     * @param date Fecha en formato texto para la busqueda
-     * @return Un {@link Set} de {@link Futbolista}
+     * @param date Fecha en formato texto para la busqueda.
+     * @return Un {@link Set} de {@link Futbolista}.
      */
     Set<Futbolista> findByDate(String date);
 
     /**
-     * Busqueda de jugadoras dependiendo del apellido
+     * Busqueda de jugadoras dependiendo del apellido.
      *
-     * @param surname Apellido de las jugadoras para su busqueda
-     * @return Un {@link Set} de {@link Futbolista}
+     * @param surname Apellido de las jugadoras para su busqueda.
+     * @return Un {@link Set} de {@link Futbolista}.
      */
     Set<Futbolista> findBySurname(String surname);
 
     /**
-     * Busqueda de jugadoras mediante todos sus parametros si existen o no
+     * Busqueda de jugadoras mediante todos sus parametros si existen o no.
      *
-     * @param map Un mapeado con todos los datos para su busqueda
-     * @return Un {@link Set} de {@link Futbolista}
+     * @param map Un mapeado con todos los datos para su busqueda.
+     * @return Un {@link Set} de {@link Futbolista}.
      */
     Set<Futbolista> findByOptions(Map<String, String> map);
 

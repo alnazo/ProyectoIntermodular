@@ -4,7 +4,10 @@ import com.proyectointermodular.App;
 import com.proyectointermodular.controllers.MenuPrincipal;
 import com.proyectointermodular.dao.ClubDAO;
 import com.proyectointermodular.dto.Club;
+import com.proyectointermodular.dto.Futbolista;
+import com.proyectointermodular.dto.Militacion;
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
+import com.proyectointermodular.persistence.manager.impl.MilitacionManagerImpl;
 import com.proyectointermodular.popup.PopUp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,6 +58,9 @@ public class VerClub extends MenuPrincipal {
     MenuItem o1 = new MenuItem("Editar");
     MenuItem o2 = new MenuItem("Eliminar");
 
+    /**
+     * Inicializacion de la visualización.
+     */
     @FXML
     public void initialize() {
         t_id.setCellValueFactory(new PropertyValueFactory<Club, Integer>("id"));
@@ -83,6 +89,9 @@ public class VerClub extends MenuPrincipal {
         });
     }
 
+    /**
+     * Metodo para inicializar la busqueda de datos dependiendo de la entrada de datos.
+     */
     @FXML
     private void search() {
         String s_id = this.id.getText();
@@ -148,6 +157,11 @@ public class VerClub extends MenuPrincipal {
 
     }
 
+    /**
+     * PopUp para editar el {@link Club} seleccionada en la tabla.
+     *
+     * @param c {@link Club} Datos perteneciente en la {@link javafx.scene.layout.RowConstraints}
+     */
     public void edit(Club c) {
         Stage popupwindow = new Stage();
         popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -211,12 +225,22 @@ public class VerClub extends MenuPrincipal {
 
     }
 
+    /**
+     * Metodo de eliminacion, con comprobacion de {@link Militacion}
+     *
+     * @param c {@link Club} Datos para su eliminacion
+     */
     public void eliminar(Club c) {
-        PopUp.delete();
-        if (PopUp.delete) {
-            new ClubDAO().delete(c.getId());
-            initialize();
-            PopUp.delete = false;
+        Set<Militacion> list = new MilitacionManagerImpl().findByClub(c);
+        if (list.size() > 0) {
+            PopUp.display("Este Club, tiene registros de militacion y no es posible eliminar");
+        } else {
+            PopUp.delete();
+            if (PopUp.delete) {
+                new ClubDAO().delete(c.getId());
+                initialize();
+                PopUp.delete = false;
+            }
         }
     }
 
