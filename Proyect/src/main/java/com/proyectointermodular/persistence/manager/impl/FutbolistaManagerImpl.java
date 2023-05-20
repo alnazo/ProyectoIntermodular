@@ -3,6 +3,7 @@ package com.proyectointermodular.persistence.manager.impl;
 import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.persistence.connector.MySQLConnector;
 import com.proyectointermodular.persistence.manager.FutbolistaManager;
+import com.proyectointermodular.popup.PopUp;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -30,8 +31,13 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             con.close();
             return furbolista;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
@@ -56,8 +62,13 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             }
             con.close();
             return futbolistas;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
@@ -80,8 +91,13 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             con.close();
             return futbolistas;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
 
@@ -103,8 +119,13 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             con.close();
             return futbolistas;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
@@ -127,8 +148,13 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             con.close();
             return futbolistas;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
@@ -149,8 +175,13 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             con.close();
             return futbolistas;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
@@ -196,13 +227,15 @@ public class FutbolistaManagerImpl implements FutbolistaManager {
             con.close();
             return futbolistas;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
-
-    ;
-
 
 }

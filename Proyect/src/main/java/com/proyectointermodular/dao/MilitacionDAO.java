@@ -2,6 +2,7 @@ package com.proyectointermodular.dao;
 
 import com.proyectointermodular.dto.Militacion;
 import com.proyectointermodular.persistence.connector.MySQLConnector;
+import com.proyectointermodular.popup.PopUp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,8 +32,12 @@ public class MilitacionDAO {
             stmt.execute();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Inserción a base de datos no disponible.");
         }
     }
 
@@ -53,8 +58,12 @@ public class MilitacionDAO {
 
             stmt.execute();
             con.close();
-        } catch (ClassNotFoundException | SQLException e) {
+        }  catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Actualización a base de datos no disponible.");
         }
     }
 
@@ -75,8 +84,12 @@ public class MilitacionDAO {
 
             stmt.execute();
             con.close();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Actualización a base de datos no disponible.");
         }
     }
 
@@ -88,14 +101,22 @@ public class MilitacionDAO {
     public void delete(Militacion militacion) {
         try {
             Connection con = connector.getMySQLConnection();
-            String sql = "DELETE FROM militacion WHERE (nif_futbolista = '" + militacion.getNif_Futbolista().getNif() + "' AND temporada = '" + militacion.getTemporada() + "' AND id_club = " + militacion.getId_Club().getId() + ")";
+            String sql = "DELETE FROM militacion WHERE (nif_futbolista = ? AND temporada = ? AND id_club = ?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
 
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(sql);
+            stmt.setString(1, militacion.getNif_Futbolista().getNif());
+            stmt.setString(2, militacion.getTemporada());
+            stmt.setInt(3, militacion.getId_Club().getId());
+
+            stmt.execute();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Eliminación de datos no disponible.");
         }
     }
 

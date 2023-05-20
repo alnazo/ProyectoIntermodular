@@ -47,8 +47,16 @@ public class ImportScheme {
                 con.close();
 
                 PopUp.display("La base de datos ha sido importada correctamente.");
-            } catch (ClassNotFoundException | SQLException | IOException e) {
+
+            } catch (IOException e) {
                 e.printStackTrace();
+                PopUp.display("[WARNING] Existió un error a la hora de acceder al fichero de configuración.");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                PopUp.display("[ERROR] Contacte con desarrollador.");
+            } catch (SQLException e){
+                e.printStackTrace();
+                PopUp.display("[WARNING] Existió un error a la hora de ejecutar sentencias.");
             }
             PopUp.resultado = false;
         } else {

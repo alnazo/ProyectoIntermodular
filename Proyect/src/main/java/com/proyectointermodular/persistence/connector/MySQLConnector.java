@@ -1,6 +1,7 @@
 package com.proyectointermodular.persistence.connector;
 
 import com.proyectointermodular.App;
+import com.proyectointermodular.popup.PopUp;
 import lombok.Getter;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class MySQLConnector {
             prop.load(App.class.getResource("ddbb/config.properties").openStream());
         } catch (IOException e) {
             e.printStackTrace();
+            PopUp.display("[WARNING] Hubo un problema a la hora de cargar las propiedades de acceso.");
         }
     }
 
@@ -40,9 +42,14 @@ public class MySQLConnector {
 
             return DriverManager.getConnection(getURL());
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
             throw e;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            PopUp.display("[WARNING] Existió un error a la hora de conectar a la base de datos.");
+            return null;
         }
     }
 

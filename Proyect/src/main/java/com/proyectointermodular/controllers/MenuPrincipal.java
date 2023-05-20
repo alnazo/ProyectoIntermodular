@@ -1,7 +1,6 @@
 package com.proyectointermodular.controllers;
 
 import com.proyectointermodular.App;
-import com.proyectointermodular.persistence.connector.MySQLConnector;
 import com.proyectointermodular.persistence.manageDDBB.ChangeData;
 import com.proyectointermodular.persistence.manageDDBB.ImportScheme;
 import com.proyectointermodular.popup.PopUp;
@@ -12,7 +11,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class MenuPrincipal {
     @FXML
@@ -46,23 +44,28 @@ public class MenuPrincipal {
      * @param file Sub-ruta del fichero dentro de la carpeta organizadora de las visualizaciones.
      * @throws IOException Excepción en caso de que el {@param file} no exista el acceso.
      */
-    private void changeView(String file) throws IOException {
-        if (f3 != null && c3 != null) {
-            if (!c3.disableProperty().getValue()) {
-                c3.disableProperty().setValue(true);
-                c3.opacityProperty().setValue(0);
+    private void changeView(String file){
+        try {
+            if (f3 != null && c3 != null) {
+                if (!c3.disableProperty().getValue()) {
+                    c3.disableProperty().setValue(true);
+                    c3.opacityProperty().setValue(0);
+                }
+
+                if (!f3.disableProperty().getValue()) {
+                    f3.disableProperty().setValue(true);
+                    f3.opacityProperty().setValue(0);
+                }
             }
 
-            if (!f3.disableProperty().getValue()) {
-                f3.disableProperty().setValue(true);
-                f3.opacityProperty().setValue(0);
-            }
+            windowsGeneric.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + file + ".fxml"));
+            GridPane newPanel = loader.load();
+            windowsGeneric.getChildren().add(newPanel);
+        } catch (IOException e){
+            e.printStackTrace();
+            PopUp.display("Ha surgido un problema al iniciar la visualización.");
         }
-
-        windowsGeneric.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + file + ".fxml"));
-        GridPane newPanel = loader.load();
-        windowsGeneric.getChildren().add(newPanel);
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.proyectointermodular.dto;
 
+import com.proyectointermodular.popup.PopUp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Futbolista {
             this.nif = result.getString("nif");
         } catch (SQLException e) {
             e.printStackTrace();
+            PopUp.display("[WARNING] Obtención de Futbolista no disponible");
         }
     }
 

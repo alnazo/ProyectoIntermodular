@@ -2,6 +2,7 @@ package com.proyectointermodular.dto;
 
 import com.proyectointermodular.persistence.manager.impl.ClubManagerImpl;
 import com.proyectointermodular.persistence.manager.impl.FutbolistaManagerImpl;
+import com.proyectointermodular.popup.PopUp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class Militacion {
             this.id_Club = new ClubManagerImpl().findById(result.getInt("id_club"));
         } catch (SQLException e) {
             e.printStackTrace();
+            PopUp.display("[WARNING] Obtención de Militacion no disponible");
         }
     }
 

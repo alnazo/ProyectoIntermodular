@@ -2,6 +2,7 @@ package com.proyectointermodular.dao;
 
 import com.proyectointermodular.dto.Club;
 import com.proyectointermodular.persistence.connector.MySQLConnector;
+import com.proyectointermodular.popup.PopUp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,8 +31,12 @@ public class ClubDAO {
             stmt.execute();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Inserción a base de datos no disponible.");
         }
     }
 
@@ -54,8 +59,12 @@ public class ClubDAO {
 
             stmt.execute();
             con.close();
-        } catch (ClassNotFoundException | SQLException e) {
+        }  catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Actualización a base de datos no disponible.");
         }
     }
 
@@ -76,8 +85,12 @@ public class ClubDAO {
             stmt.executeUpdate();
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Eliminación de datos no disponible.");
         }
     }
 

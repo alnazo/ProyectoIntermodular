@@ -182,8 +182,12 @@ public class PopUp {
         gitHub.setOnAction(e -> {
             try {
                 Desktop.getDesktop().browse(new URI("https://github.com/alnazo"));
-            } catch (IOException | URISyntaxException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
+                display("[WARNING] Imagen no disponible (GitHub).");
+            } catch(URISyntaxException ex) {
+                ex.printStackTrace();
+                display("[ERROR] Contacte con desarrollador.");
             }
         });
         //Twitter
@@ -197,8 +201,12 @@ public class PopUp {
         twitter.setOnAction(e -> {
             try {
                 Desktop.getDesktop().browse(new URI("https://twitter.com/@Antonio3_96"));
-            } catch (IOException | URISyntaxException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
+                display("[WARNING] Imagen no disponible (Twitter).");
+            } catch(URISyntaxException ex) {
+                ex.printStackTrace();
+                display("[ERROR] Contacte con desarrollador.");
             }
         });
         //YouTube
@@ -212,8 +220,12 @@ public class PopUp {
         youtube.setOnAction(e -> {
             try {
                 Desktop.getDesktop().browse(new URI("https://www.youtube.com/@Alnazo"));
-            } catch (IOException | URISyntaxException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
+                display("[WARNING] Imagen no disponible (Youtube).");
+            } catch(URISyntaxException ex) {
+                ex.printStackTrace();
+                display("[ERROR] Contacte con desarrollador.");
             }
         });
         //Twitch
@@ -227,8 +239,12 @@ public class PopUp {
         twitch.setOnAction(e -> {
             try {
                 Desktop.getDesktop().browse(new URI("https://twitch.tv/alnazo"));
-            } catch (IOException | URISyntaxException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
+                display("[WARNING] Imagen no disponible (Twitch).");
+            } catch(URISyntaxException ex) {
+                ex.printStackTrace();
+                display("[ERROR] Contacte con desarrollador.");
             }
         });
         //TikTok
@@ -242,8 +258,12 @@ public class PopUp {
         tiktok.setOnAction(e -> {
             try {
                 Desktop.getDesktop().browse(new URI("https://www.tiktok.com/@antonio3_96"));
-            } catch (IOException | URISyntaxException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
+                display("[WARNING] Imagen no disponible (TikTok).");
+            } catch(URISyntaxException ex) {
+                ex.printStackTrace();
+                display("[ERROR] Contacte con desarrollador.");
             }
         });
 

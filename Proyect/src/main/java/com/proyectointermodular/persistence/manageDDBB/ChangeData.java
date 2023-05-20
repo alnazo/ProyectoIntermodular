@@ -57,8 +57,15 @@ public class ChangeData {
             } else {
                 PopUp.display("La conexión a la Base de Datos no se ha podido realizar correctamente.");
             }
-        } catch (IOException | ClassNotFoundException | SQLException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+            PopUp.display("[WARNING] Existió un error a la hora de acceder al fichero de configuración.");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+        } catch (SQLException e){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Existió un error a la hora de conectar a la base de datos.");
         }
     }
 

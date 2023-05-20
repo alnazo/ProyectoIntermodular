@@ -1,5 +1,6 @@
 package com.proyectointermodular.dto;
 
+import com.proyectointermodular.popup.PopUp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ public class Club {
             this.estadio = result.getString("estadio");
         } catch (SQLException e) {
             e.printStackTrace();
+            PopUp.display("[WARNING] Obtención de Club no disponible");
         }
     }
 

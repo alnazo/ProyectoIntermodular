@@ -5,6 +5,7 @@ import com.proyectointermodular.dto.Futbolista;
 import com.proyectointermodular.dto.Militacion;
 import com.proyectointermodular.persistence.connector.MySQLConnector;
 import com.proyectointermodular.persistence.manager.MilitacionManager;
+import com.proyectointermodular.popup.PopUp;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,12 +20,12 @@ public class MilitacionManagerImpl implements MilitacionManager {
 
     @Override
     public Set<Militacion> findAll() {
-        Set<Militacion> milit = new HashSet<>();
 
         try {
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
 
+            Set<Militacion> milit = new HashSet<>();
             ResultSet result = stmt.executeQuery("SELECT * FROM militacion");
             while (result.next()) {
                 milit.add(new Militacion(result));
@@ -34,19 +35,24 @@ public class MilitacionManagerImpl implements MilitacionManager {
 
             return milit;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
 
     @Override
     public Militacion findByAllParams(String temp, String nif, Integer id) {
-        Militacion mili = null;
-
         try {
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
+
+            Militacion mili = null;
 
             String sql = "SELECT * FROM militacion WHERE nif_futbolista = '" + nif + "' AND temporada = '" + temp + "' AND id_club = " + id;
 
@@ -57,20 +63,23 @@ public class MilitacionManagerImpl implements MilitacionManager {
             }
             con.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+            return mili;
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
-        return mili;
 
     }
 
     @Override
     public Set<Militacion> findByTemporada(String temporada) {
-
-        String sql = String.format("SELECT * FROM militacion WHERE temporada LIKE '%s'", "%" + temporada + "%");
-
         try {
+            String sql = String.format("SELECT * FROM militacion WHERE temporada LIKE '%s'", "%" + temporada + "%");
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
 
@@ -85,18 +94,21 @@ public class MilitacionManagerImpl implements MilitacionManager {
 
             return milit;
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
 
     @Override
     public Set<Militacion> findByFutbolista(Futbolista futbolista) {
-
-        String sql = String.format("SELECT * FROM militacion WHERE nif_futbolista = '%s'", futbolista.getNif());
-
         try {
+            String sql = String.format("SELECT * FROM militacion WHERE nif_futbolista = '%s'", futbolista.getNif());
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
 
@@ -108,8 +120,13 @@ public class MilitacionManagerImpl implements MilitacionManager {
             }
             con.close();
             return milit;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
 
@@ -117,9 +134,8 @@ public class MilitacionManagerImpl implements MilitacionManager {
 
     @Override
     public Set<Militacion> findByClub(Club club) {
-        String sql = String.format("SELECT * FROM militacion WHERE id_club = %s", club.getId());
-
         try {
+            String sql = String.format("SELECT * FROM militacion WHERE id_club = %s", club.getId());
             Connection con = connector.getMySQLConnection();
             Statement stmt = con.createStatement();
 
@@ -131,11 +147,15 @@ public class MilitacionManagerImpl implements MilitacionManager {
             }
             con.close();
             return milit;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            PopUp.display("[ERROR] Contacte con desarrollador.");
+            return null;
+        } catch (SQLException e ){
+            e.printStackTrace();
+            PopUp.display("[WARNING] Acceso de datos no disponible.");
             return null;
         }
     }
-
 
 }

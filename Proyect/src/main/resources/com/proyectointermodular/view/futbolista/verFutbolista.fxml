@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <GridPane fx:id="windowsGeneric" alignment="CENTER" minHeight="500.0" minWidth="575.0" prefHeight="1080.0"
-          prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+          prefWidth="1920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="com.proyectointermodular.controllers.futbolista.VerFutbolista">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="83.0"/>
